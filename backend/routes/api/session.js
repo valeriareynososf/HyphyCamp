@@ -28,6 +28,10 @@ router.post(
     });
   }),
 );
+router.delete("/", (_req, res) => {
+  res.clearCookie("token");
+  return res.json({ message: "success" });
+});
 
 module.exports = router;
 /* wcYy963y-tFAddt66mPCJ0xyeyy1seBweFgI
