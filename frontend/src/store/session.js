@@ -32,6 +32,29 @@ export const login = (user) => async (dispatch) => {
     dispatch(setUser(data.user));
     return response;
 }
+//Thunk action for GET /api/session
+export const restoreUser = () => async (dispatch) => {
+  const response = await csrfFetch("/api/session");
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
+//Thunk action for POST /api/users
+export const signup = (user) => async (dispatch) => {
+  const { email, username, password } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      email,
+      username,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
 
 const initialState = { user: null };
 
