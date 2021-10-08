@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
 
-const { setTokenCookie, restoreUser } = require("../../utils/auth");
+const { setTokenCookie, restoreUser} = require("../../utils/auth");
 const { User } = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -19,10 +19,7 @@ const validateLogin = [
 ];
 
 // Log in
-router.post(
-  "/",
-  validateLogin,
-  asyncHandler(async (req, res, next) => {
+router.post("/", validateLogin, asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
 
     const user = await User.login({ credential, password });
@@ -49,10 +46,7 @@ router.delete("/", (_req, res) => {
 });
 
 // Restore session user
-router.get(
-  '/',
-  restoreUser,
-  (req, res) => {
+router.get('/', restoreUser, (req, res) => {
     const { user } = req;
     if (user) {
       return res.json({
@@ -61,6 +55,15 @@ router.get(
     } else return res.json({});
   }
 );
+
+//demo
+// router.get("/demo", asyncHandler(async (req, res) => {
+//   //const user = await db.User.getCurrentUserById(1);
+//   const user = await db.User.findByPk(1);
+//   login("demo@user.io", "password");
+//   return res.json({ user });
+// })
+// );
 
 module.exports = router;
 /* wcYy963y-tFAddt66mPCJ0xyeyy1seBweFgI
