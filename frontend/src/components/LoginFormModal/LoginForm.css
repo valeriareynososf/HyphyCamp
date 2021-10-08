@@ -1,5 +1,5 @@
 .loginForm {
-    display: flex;
+  display: flex;
   flex-direction: column;
-  max-width: 200px;
+  padding: 20px;
 }

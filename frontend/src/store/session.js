@@ -32,6 +32,14 @@ export const login = (user) => async (dispatch) => {
     dispatch(setUser(data.user));
     return response;
 }
+//demo
+export const demologin = () => async (dispatch) => {
+  const response = await csrfFetch("/demo")
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
 //Thunk action for GET /api/session
 export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");

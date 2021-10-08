@@ -6,6 +6,7 @@ const { User } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+const { db } = require("../../config");
 
 const validateSignup = [
   check("email")
@@ -36,4 +37,10 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     });
   }),
 );
+
+//Demo
+// router.get("/demo", asyncHandler(async (req, res) => {
+//     const user = await User.findByPk(1);
+//   })
+// );
 module.exports = router;
