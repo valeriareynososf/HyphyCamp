@@ -17,7 +17,6 @@ function Navigation({ isLoaded }) {
   const [password, setPassword] = useState("");
 
 const demonLogin = async () => {
-  // await dispatch(demologin);
   setCredential("demo@user.io");
   setPassword("password");
   return dispatch(
@@ -34,20 +33,20 @@ const demonLogin = async () => {
       <>
         <LoginFormModal />
         <SignupFormModal />
-        <button onClick={demonLogin}>Demo Login</button>
+        <button onClick={demonLogin} className="demoBtn">Demo Login</button>
       </>
     );
   }
 
   return (
-    <ul className="navbar">
-      <li>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <nav className="navbar">
+      <NavLink exact to="/">
+        hyphycamp
+      </NavLink>
+      <ul>
+        <li>{isLoaded && sessionLinks}</li>
+      </ul>
+    </nav>
   );
 }
 

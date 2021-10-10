@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,8 +16,10 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      <Navigation isLoaded={isLoaded} />
+    <nav className="appbody">
+      <div className="navigation">
+        <Navigation isLoaded={isLoaded} />
+      </div>
       <HomePage />
       {/* {isLoaded && (
         <Switch>
@@ -25,7 +28,7 @@ function App() {
           </Route>
         </Switch>
       )} */}
-    </>
+    </nav>
   );
 }
 
