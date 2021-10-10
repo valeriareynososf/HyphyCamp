@@ -2,6 +2,13 @@
 /* .body {
     background-color: orange;
 } */
+.profile-dropdown {
+    color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .navbar {
     /* border: 3px solid red; */
     padding: 0 15px;
@@ -15,16 +22,22 @@
 ul {     
     display: flex;
      justify-content: flex-end;
-     align-items: center;
+     /* align-items: center; */
      list-style-type: none;
 }
 
 /* li {
-    text-decoration: none;
+display: flex;
+flex-direction: column;
 } */
+
 .active {
     /* border: 3px dotted blue; */
     text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .loginBtn {
