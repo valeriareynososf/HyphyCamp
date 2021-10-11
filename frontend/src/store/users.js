@@ -1,4 +1,3 @@
-import { useStore } from "react-redux";
 import { csrfFetch } from "./csrf";
 
 const LOAD = "users/LOAD";

@@ -16,16 +16,20 @@ console.log(user)
   return (
     <>
       <div>
-    <span>Artists</span> <Link to="/songs">Songs</Link>
-      </div> {user !== null ?
-     <ul>
-    {Object.values(user).map(artist => (
-    <li key={artist.id}>{artist.username}</li>
-    ))} </ul>
-    : null
-     }
+        <span>Artists</span> <Link to="/songs">Songs</Link>
+      </div>{" "}
+      {user !== null ? (
+        <ul>
+          {Object.values(user).map((artist) => (
+            <li key={artist.id}>
+              {artist.username}:
+              <br />
+              <img src={artist.imgUrl} alt="record player" className="imgUrl" />
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </>
   );
 }
-
 export default ArtistsPage;
