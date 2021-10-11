@@ -25,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
           len: [3, 256],
         },
       },
+      imgUrl: {
+        type: DataTypes.TEXT,
+        defaultValue:
+          "https://profileimages1.s3.us-west-1.amazonaws.com/defaultimg.png",
+      },
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,

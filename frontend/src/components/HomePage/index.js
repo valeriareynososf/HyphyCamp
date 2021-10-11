@@ -9,12 +9,11 @@ function HomePage() {
   //const [showModal, setShowModal] = useState(false);
 
   return (
-    <body>
-      <h2>HELLO THIS IS THE HOMEPAGE</h2>
+    <nav>
+      <h2>HOMEPAGE</h2>
       <p><Link to="/artists">go to artists</Link></p>
       <img src={record} alt="record player" className="homeImg"/>
-
-    </body>
+    </nav>
   );
 }
 

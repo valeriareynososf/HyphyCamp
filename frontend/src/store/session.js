@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
+
 //POJO action creators 
 const setUser = (user) => {
     return {
@@ -47,6 +48,14 @@ export const restoreUser = () => async (dispatch) => {
   dispatch(setUser(data.user));
   return response;
 };
+
+//Thunk action for GET users
+// export const getUser = () => async (dispatch) => {
+//   const response = await csrfFetch("/api/users");
+//   const user = await response.json();
+//   dispatch(setUser(user));
+//   return response;
+// };
 
 //Thunk action for POST /api/users
 export const signup = (user) => async (dispatch) => {

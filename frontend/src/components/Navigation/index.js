@@ -24,7 +24,7 @@ const demonLogin = async () => {
     sessionActions.login({ credential: "demo@user.io", password: "password" })
   );
 }
-
+  let paragraph;
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <ProfileButton user={sessionUser} />;
@@ -36,16 +36,26 @@ const demonLogin = async () => {
         <button onClick={demonLogin} className="demoBtn">demo login</button>
       </>
     );
+    paragraph = (
+      <>
+        Discover amazing new music and directly support the artists who make it.
+      </>
+    );
   }
 
   return (
-    <nav className="navbar">
-      <NavLink exact to="/" className="homeLink">
+    <nav>
+      <nav className="navbar">
+        <NavLink exact to="/" className="homeLink">
           hyphycamp
-      </NavLink>
-      <ul>
-        <li>{isLoaded && sessionLinks}</li>
-      </ul>
+        </NavLink>
+        <ul>
+          <li>{isLoaded && sessionLinks}</li>
+        </ul>
+      </nav>
+      <div>
+        {paragraph}
+      </div>
     </nav>
   );
 }

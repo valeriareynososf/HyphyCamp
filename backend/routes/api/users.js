@@ -38,9 +38,19 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
   }),
 );
 
-//Demo
-// router.get("/demo", asyncHandler(async (req, res) => {
-//     const user = await User.findByPk(1);
+//users
+router.get("/", asyncHandler(async (req, res) => {
+    const user = await User.findAll();
+    return res.json(user);
+  })
+);
+
+// router.get(
+//   "/",
+//   asyncHandler(async function (_req, res) {
+//     const pokemon = await PokemonRepository.list();
+//     return res.json(pokemon);
 //   })
 // );
+
 module.exports = router;
