@@ -2,31 +2,33 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "users/LOAD";
 
-const load = () => ({
+const load = (users) => ({
   type: LOAD,
+  payload: users,
 });
 
 //Thunk action for GET users
 export const getUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/users");
-  const user = await response.json();
-  dispatch(load(user));
+  const users = await response.json();
+  dispatch(load(users));
   return response;
 };
 
-const initialState = [];
+const initialState = {artists: null};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
         const allUsers = {};
-        action.state.forEach(user => {
+        const users = Object.values(action.payload)
+        users.forEach(user => {
         allUsers[user.id] = user;
         });
+        console.log("all usrs", allUsers)
         return {
-            ...allUsers,
             ...state,
-            state: (action.state)
+            artists:{...allUsers},
         }
     }
     default:

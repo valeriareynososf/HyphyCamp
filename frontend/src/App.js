@@ -20,9 +20,9 @@ function App() {
     useEffect(() => {
       dispatch(getUser());
     }, [dispatch]);
-
+console.log("ARE THESE USERS:", users)
   return (
-    <nav className="appbody">
+    <nav>
       <div className="navigation">
         <Navigation isLoaded={isLoaded} />
       </div>

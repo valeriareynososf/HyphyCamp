@@ -49,7 +49,7 @@ const demonLogin = async () => {
         <NavLink exact to="/" className="homeLink">
           hyphycamp
         </NavLink>
-        <ul>
+        <ul className="sessionLinks">
           <li>{isLoaded && sessionLinks}</li>
         </ul>
       </nav>
