@@ -1,3 +1,8 @@
 body {
     background-color: rgb(143, 135, 135);
 }
+
+.homeImg {
+    width: 80%;
+    height: 80%;
+}

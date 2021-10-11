@@ -40,7 +40,7 @@ const demonLogin = async () => {
 
   return (
     <nav className="navbar">
-      <NavLink exact to="/">
+      <NavLink exact to="/" className="homeLink">
           hyphycamp
       </NavLink>
       <ul>
