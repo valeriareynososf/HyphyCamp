@@ -33,7 +33,7 @@ const demonLogin = async () => {
       <>
         <LoginFormModal />
         <SignupFormModal />
-        <button onClick={demonLogin} className="demoBtn">Demo Login</button>
+        <button onClick={demonLogin} className="demoBtn">demo login</button>
       </>
     );
   }
@@ -41,7 +41,7 @@ const demonLogin = async () => {
   return (
     <nav className="navbar">
       <NavLink exact to="/">
-        hyphycamp
+          hyphycamp
       </NavLink>
       <ul>
         <li>{isLoaded && sessionLinks}</li>
