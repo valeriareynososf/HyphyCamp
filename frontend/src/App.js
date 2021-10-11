@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import "./index.css";
 import ArtistsPage from "./components/Artistspage";
 import SongsPage from "./components/SongsPage";
+import ArtistsProfile from "./components/ArtistsProfile"
 import {getUser} from "./store/users";
 
 function App() {
@@ -33,6 +34,9 @@ console.log("ARE THESE USERS:", users)
         </Route>
         <Route path="/artists">
           <ArtistsPage users={users} />
+        </Route>
+        <Route path="/artists/:id">
+          <ArtistsProfile users={users} />
         </Route>
         <Route path="/songs">
           <SongsPage />
