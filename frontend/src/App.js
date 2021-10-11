@@ -22,7 +22,7 @@ function App() {
     useEffect(() => {
       dispatch(getUser());
     }, [dispatch]);
-console.log("ARE THESE USERS:", users)
+
   return (
     <nav>
       <div className="navigation">
@@ -32,10 +32,10 @@ console.log("ARE THESE USERS:", users)
         <Route path="/" exact>
           <HomePage />
         </Route>
-        <Route path="/artists">
+        <Route path="/artists" exact>
           <ArtistsPage users={users} />
         </Route>
-        <Route path="/artists/:id">
+        <Route path="/artists/:id" exact>
           <ArtistsProfile users={users} />
         </Route>
         <Route path="/songs">
