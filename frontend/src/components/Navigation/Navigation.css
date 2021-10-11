@@ -1,51 +1,32 @@
 
-/* .body {
-    background-color: orange;
-} */
 .profile-dropdown {
-    /* color: red; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .navbar {
-    /* border: 3px solid red; */
     padding: 0 15px;
-    /* margin: 50x; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 
 }
 
-ul {     
+.sessionLinks {     
     display: flex;
      justify-content: flex-end;
-     /* align-items: center; */
      list-style-type: none;
 }
 
-/* li {
-display: flex;
-flex-direction: column;
-} */
+
 .homeLink {
     color: #212121;
     text-decoration: none;
-       /* border: 3px dotted blue; */
     font-weight: 530;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
-/* .active {
- 
-    text-decoration: none;
-    
-    font-weight: 530;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-} */
 
 .loginBtn {
     border: none;
@@ -57,7 +38,6 @@ flex-direction: column;
 }
 
 .signupBtn {
-    /* border: 3px dotted orange; */
     border: none;
      font-size: 14px;
     font-family: Helvetica;
@@ -66,10 +46,7 @@ flex-direction: column;
 
 }
 .demoBtn {
-    /* position: relative; */
-    /* border: 3px dotted blue; */
     border: none;
-    /* font-weight: bold; */
     font-size: 14px;
     font-family: Helvetica;
     color: #161113;
@@ -78,7 +55,6 @@ flex-direction: column;
 }
 
 .profileBtn{
-/* color: royalblue; */
 border: none;
 padding: 18px;
 border-radius: 50%;
