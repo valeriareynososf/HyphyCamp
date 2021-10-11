@@ -24,7 +24,7 @@ console.log(user)
             <li key={artist.id}>
               {artist.username}:
               <br />
-              <img src={artist.imgUrl} alt="record player" className="imgUrl" />
+              <img src={artist.imgUrl} alt="ArtistImage" className="imgUrl" />
             </li>
           ))}
         </ul>

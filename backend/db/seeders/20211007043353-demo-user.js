@@ -14,19 +14,10 @@ module.exports = {
           hashedPassword: bcrypt.hashSync("password"),
         },
         {
-          email: faker.internet.email(),
-          username: "FakeUser1",
-          hashedPassword: bcrypt.hashSync(faker.internet.password()),
-        },
-        {
-          email: faker.internet.email(),
-          username: "FakeUser2",
-          hashedPassword: bcrypt.hashSync(faker.internet.password()),
-        },
-        {
           email: "val@example.com",
           username: "valeria",
           hashedPassword: bcrypt.hashSync("password"),
+          imgUrl: "https://profileimages1.s3.us-west-1.amazonaws.com/demo.jpeg",
         },
         {
           email: "rappin4tay@example.com",
