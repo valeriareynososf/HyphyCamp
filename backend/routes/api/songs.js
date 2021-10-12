@@ -32,9 +32,13 @@ router.put("/:id(\\d+)",requireAuth,asyncHandler(async (req, res) => {
   })
 );
 
-router.delete("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
-    const songs = await Song.findByPk(req.params.id);
-    return res.json(songs);
+router.delete(
+  "/:id(\\d+)",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const song = await Song.findByPk(req.params.id);
+    song.destroy();
+    return res.json({ deleted: song });
   })
 );
 
