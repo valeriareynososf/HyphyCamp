@@ -71,7 +71,7 @@ function SignupForm() {
         required
       />
       <br />
-      <button type="submit" >Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 }

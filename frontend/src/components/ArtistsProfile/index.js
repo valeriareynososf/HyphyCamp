@@ -31,7 +31,7 @@ function ArtistsProfile() {
         songs | <button onClick={() => setShowModal(true)}>add a track </button>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
-            <AddSong />
+            <AddSong setShowModal={setShowModal} />
           </Modal>
         )}
         <br />

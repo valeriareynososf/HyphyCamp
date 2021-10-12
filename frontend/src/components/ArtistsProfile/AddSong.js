@@ -1,23 +1,27 @@
 import React, { useState } from "react";
-import {  useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addSong } from "../../store/songs";
+import * as sessionActions from "../../store/session";
 
-function AddSong() {
-    const dispatch = useDispatch();
+function AddSong({setShowModal}) {
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [url, setUrl] = useState("");
- const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
+  const id = useSelector((state) => state.session.user?.id);
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (!name) setErrors(["Name field is required"]);
-  if (!url) setErrors(["A url to the track is required"]);
-//   if (!imgUrl) setErrors(["An img field is required"]);
-if (!errors.length){
-return dispatch(addSong({name, imgUrl, url}))
-}
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name) setErrors(["Name field is required"]);
+    if (!url) setErrors(["A url to the track is required"]);
+    //   if (!imgUrl) setErrors(["An img field is required"]);
+    if (!errors.length) {
+      setErrors([]);
+      setShowModal(false)
+      return dispatch(addSong({ name, imgUrl, url }, id));
+    }
+  };
 
   return (
     <>

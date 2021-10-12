@@ -9,10 +9,9 @@ const load = (songs, userId) => ({
   userId
 });
 
-const add_song = (song, userId) => ({
+const add_song = (song) => ({
   type: ADD_SONG,
   payload: song,
-  userId,
 });
 
 export const getSongs = () => async (dispatch) => {
@@ -41,7 +40,8 @@ export const addSong = (song, id) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  dispatch(add_song(data.song));
+  console.log(data)
+  dispatch(add_song(data));
   return response;
 };
 
@@ -62,9 +62,11 @@ const songReducer = (state = initialState, action) => {
         songs: { ...allSongs },
       };
     }
-    case ADD_SONG:
+case ADD_SONG:
       newState = Object.assign({}, state);
-      newState.song = action.payload;
+      newState.songs = { ...newState.songs,
+                         [action.payload.id]: action.payload
+                        }
       return newState;
     default:
       return state;
