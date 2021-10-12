@@ -66,4 +66,18 @@ router.get('/:id(\\d+)/songs', asyncHandler(async (req, res) => {
 }));
 
 
+router.post("/:id(\\d+)/songs", requireAuth, asyncHandler(async (req, res) => {
+    const { name, imgUrl, url } = req.body;
+    const artistId = req.params.id;
+     const user = await User.getCurrentUserById(artistId);
+    const songs = await Song.create({
+      name,
+      imgUrl,
+      artistId,
+      url,
+    });
+    return res.json(songs);
+  })
+);
+
 module.exports = router;
