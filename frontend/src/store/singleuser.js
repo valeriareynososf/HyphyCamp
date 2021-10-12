@@ -10,7 +10,7 @@ const oneUser = (user) => ({
 
 //Thunk action for GET single users
 export const singleUser = (id) => async (dispatch) => {
-  const response = await fetch(`/api/users/${id}`);
+  const response = await csrfFetch(`/api/users/${id}`);
   if (response.ok) {
     const user = await response.json();
     dispatch(oneUser(user))

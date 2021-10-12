@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import userReducer from "./users"
 import singleReducer from "./singleuser"
+import songReducer from "./songs";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   userReducer,
   single: singleReducer,
+  songReducer,
 });
 
 let enhancer;
