@@ -15,6 +15,7 @@ function ArtistsProfile() {
   const user = useSelector((state) => state.single.main);
   const songs = useSelector((state) => state.songReducer.songs);
   const [showModal, setShowModal] = useState(false);
+  
 
   useEffect(() => {
     dispatch(singleUser(+userId));
