@@ -65,5 +65,17 @@ router.get('/:id(\\d+)/songs', asyncHandler(async (req, res) => {
   return res.json(songs);
 }));
 
+/*
+router.post('/:id(\\d+)/songs', asyncHandler(async (req, res) => {
+   const artistId = req.params.id;
+    const user = await User.getCurrentUserById(artistId);
+     const songs = await Song.findAll({
+      where: {
+        artistId,
+      },
+    });
+  return res.json(songs);
+}));
+*/
 
 module.exports = router;
