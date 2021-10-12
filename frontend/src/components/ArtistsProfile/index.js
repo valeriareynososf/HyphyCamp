@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
- //import { getUser } from "../../store/users";
 import { singleUser } from "../../store/singleuser";
 import "./profile.css"
 
@@ -10,19 +9,18 @@ function ArtistsProfile() {
   const { userId } = useParams();
 const user = useSelector((state) => state.single.main);
 
-//const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     dispatch(singleUser(+userId))
   }, [userId, dispatch]);
 
   return (
-    <>
-      <h2>artist page</h2>
-      <div>{user.username}</div>
-      <div>
+    <div className="container">
+      <div className="songsList">songs</div>
+      <div className="profileInfo">
         <img src={user.imgUrl} alt="ArtistImage" className="profileImg" />
+      <div>{user.username}</div>
       </div>
-    </>
+    </div>
   );
 
 }
