@@ -7,11 +7,11 @@ import HomePage from "./components/HomePage";
 import "./index.css";
 import ArtistsPage from "./components/Artistspage";
 import SongsPage from "./components/SongsPage";
+import ArtistsProfile from "./components/ArtistsProfile"
 import {getUser} from "./store/users";
 
 function App() {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users);
 
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -21,7 +21,7 @@ function App() {
     useEffect(() => {
       dispatch(getUser());
     }, [dispatch]);
-console.log("ARE THESE USERS:", users)
+
   return (
     <nav>
       <div className="navigation">
@@ -31,8 +31,11 @@ console.log("ARE THESE USERS:", users)
         <Route path="/" exact>
           <HomePage />
         </Route>
-        <Route path="/artists">
-          <ArtistsPage users={users} />
+        <Route path="/artists" exact>
+          <ArtistsPage />
+        </Route>
+        <Route path="/artists/:userId" exact>
+          <ArtistsProfile />
         </Route>
         <Route path="/songs">
           <SongsPage />

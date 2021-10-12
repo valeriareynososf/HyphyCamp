@@ -1,9 +1,15 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = "users/LOAD";
+ const ADD_ONE = "users/ADD_ONE";
 
 const load = (users) => ({
   type: LOAD,
+  payload: users,
+});
+
+const oneUser = (users) => ({
+  type: ADD_ONE,
   payload: users,
 });
 
@@ -15,21 +21,31 @@ export const getUser = () => async (dispatch) => {
   return response;
 };
 
+//Thunk action for GET single users
+export const singleUser = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/users/${id}`);
+  if (response.ok) {
+  const users = await response.json();
+  dispatch(oneUser(users));
+  return response;
+  }
+};
+
 const initialState = {artists: null};
+const sortList = [];
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
-        const allUsers = {};
-        const users = Object.values(action.payload)
-        users.forEach(user => {
+      const allUsers = {};
+      const users = Object.values(action.payload);
+      users.forEach((user) => {
         allUsers[user.id] = user;
-        });
-        console.log("all usrs", allUsers)
-        return {
-            ...state,
-            artists:{...allUsers},
-        }
+      });
+      return {
+        ...state,
+        artists: { ...allUsers },
+      };
     }
     default:
       return state;

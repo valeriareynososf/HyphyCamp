@@ -45,12 +45,11 @@ router.get("/", asyncHandler(async (req, res) => {
   })
 );
 
-// router.get(
-//   "/",
-//   asyncHandler(async function (_req, res) {
-//     const pokemon = await PokemonRepository.list();
-//     return res.json(pokemon);
-//   })
-// );
+router.get("/:id(\\d+)",
+  asyncHandler(async (req, res) => {
+    const user = await User.getCurrentUserById(req.params.id);
+    return res.json(user);
+  })
+);
 
 module.exports = router;
