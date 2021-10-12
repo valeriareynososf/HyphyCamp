@@ -65,17 +65,19 @@ router.get('/:id(\\d+)/songs', asyncHandler(async (req, res) => {
   return res.json(songs);
 }));
 
-/*
-router.post('/:id(\\d+)/songs', asyncHandler(async (req, res) => {
-   const artistId = req.params.id;
+
+router.post("/:id(\\d+)/songs", requireAuth, asyncHandler(async (req, res) => {
+    const { name, imgUrl, url } = req.body;
+    const artistId = req.params.id;
     const user = await User.getCurrentUserById(artistId);
-     const songs = await Song.findAll({
-      where: {
-        artistId,
-      },
+    const songs = await Song.create({
+      name,
+      imgUrl,
+      artistId,
+      url,
     });
-  return res.json(songs);
-}));
-*/
+    return res.json(songs);
+  })
+);
 
 module.exports = router;
