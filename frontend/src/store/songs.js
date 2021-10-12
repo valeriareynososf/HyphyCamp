@@ -3,9 +3,10 @@ import { csrfFetch } from "./csrf";
 const LOAD = "songs/LOAD";
 
 
-const load = (songs) => ({
+const load = (songs, userId) => ({
   type: LOAD,
   payload: songs,
+  userId
 });
 
 export const getSongs = () => async (dispatch) => {
@@ -13,6 +14,14 @@ export const getSongs = () => async (dispatch) => {
   const songs = await response.json();
   dispatch(load(songs));
   return response;
+};
+
+export const artistsSongs = (id) => async (dispatch) => {
+  const response = await fetch(`/api/users/${id}/songs`);
+  if (response.ok) {
+    const songs = await response.json();
+    dispatch(load(songs, id));
+  }
 };
 
 const initialState = { songs: null };
