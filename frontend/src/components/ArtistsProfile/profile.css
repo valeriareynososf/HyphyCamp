@@ -37,8 +37,8 @@
 }
 
 .userSongs {
-  list-style-type: none;
-  /* border: 2px solid red; */
+  /* list-style-type: none; */
+  border: 2px solid red;
 }
 
 .songImg {

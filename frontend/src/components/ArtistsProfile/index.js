@@ -15,7 +15,7 @@ function ArtistsProfile() {
   const user = useSelector((state) => state.single.main);
   const songs = useSelector((state) => state.songReducer.songs);
   const [showModal, setShowModal] = useState(false);
-  
+  const id = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
     dispatch(singleUser(+userId));
@@ -36,16 +36,18 @@ function ArtistsProfile() {
         )}
         <br />
         {songs !== null ? (
-          <ul>
+          <div>
             {Object.values(songs).map((song) => (
-              <li key={song.id} className="userSongs">
-                {song.name}
+              <div key={song.id} className="userSongs">
+                <h2>{song.name}</h2>
                 <br />
-                <img src={song.imgUrl} alt="ArtistImage" className="songImg" />
                 <audio src={song.url} controls />
-              </li>
+                <img src={song.imgUrl} alt="ArtistImage" className="songImg" />
+                {id === song.artistId ? <button>edit track</button> : null}
+                {id === song.artistId ? <button>delete</button> : null}
+              </div>
             ))}
-          </ul>
+          </div>
         ) : null}
       </div>
       <div className="profileInfo">
