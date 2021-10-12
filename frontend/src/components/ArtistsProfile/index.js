@@ -24,13 +24,16 @@ if (!songs) {
     <div className="container">
       <div className="songsList">
         songs
+        <br />
         {songs !== null ? (
           <ul>
+            
             {Object.values(songs).map((song) => (
               <li key={song.id} className="userSongs">
                 {song.name}
                 <br />
                 <img src={song.imgUrl} alt="ArtistImage" className="songImg"/>
+                <audio src={song.url} controls/>
               </li>
             ))}
           </ul>
