@@ -26,7 +26,7 @@ export const singleUser = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/users/${id}`);
   if (response.ok) {
   const users = await response.json();
-  dispatch(LOAD(users));
+  dispatch(oneUser(users));
   return response;
   }
 };
@@ -45,25 +45,6 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         artists: { ...allUsers },
-      };
-    }
-    case ADD_ONE: {
-      if (!state[action.users.id]) {
-        const newState = {
-          ...state,
-          [action.users.id]: action.users,
-        };
-        const usersList = newState.list.map((id) => newState[id]);
-        usersList.push(action.users);
-        newState.list = sortList(usersList);
-        return newState;
-      }
-      return {
-        ...state,
-        [action.users.id]: {
-          ...state[action.users.id],
-          ...action.users,
-        },
       };
     }
     default:

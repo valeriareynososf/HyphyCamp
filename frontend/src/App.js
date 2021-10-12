@@ -12,7 +12,6 @@ import {getUser} from "./store/users";
 
 function App() {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users);
 
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -33,10 +32,10 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/artists" exact>
-          <ArtistsPage users={users} />
+          <ArtistsPage />
         </Route>
-        <Route path="/artists/:id" exact>
-          <ArtistsProfile users={users} />
+        <Route path="/artists/:userId" exact>
+          <ArtistsProfile />
         </Route>
         <Route path="/songs">
           <SongsPage />
