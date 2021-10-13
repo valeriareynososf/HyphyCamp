@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const {requireAuth } = require("../../utils/auth");
 // const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Song } = require("../../db/models");
+const { Song, Comment, User } = require("../../db/models");
 const router = express.Router();
 // const { check } = require("express-validator");
 // const { handleValidationErrors } = require("../../utils/validation");
@@ -42,4 +42,52 @@ router.delete(
   })
 );
 
+//get songs comments
+router.get('/:id(\\d+)/comments', asyncHandler(async (req, res) => {
+   const songId = req.params.id;
+     const comments = await Comment.findAll({
+      where: {
+        songId,
+      },
+    });
+  return res.json(comments);
+}));
+
+
+//create comments ADD AUTH
+router.post("/:id(\\d+)/comments", requireAuth, asyncHandler(async (req, res) => {
+    const { content } = req.body;
+    const songId = req.params.id;
+    const userId = req.user.id;
+    const comments = await Comment.create({
+      userId,
+      songId,
+      content,
+    });
+    return res.json(comments);
+  })
+);
+
+//edit comment
+// router.put("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+//     const { content } = req.body;
+//     const song = await Song.findByPk(req.params.id);
+//     const track = await song.update({
+//       name,
+//       imgUrl,
+//       url,
+//     });
+//     return res.json(track);
+//   })
+// );
+/* wcYy963y-tFAddt66mPCJ0xyeyy1seBweFgI
+fetch('/api/songs/1/comments', {
+  method: 'PUT',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `TDRvYjeJ-V-M5kN24vJhbMyd0Eb8z6NRvKZg`
+  },
+  body: JSON.stringify({ content: 'i love this song this is an edit' })
+}).then(res => res.json()).then(data => console.log(data));
+*/
 module.exports = router;
