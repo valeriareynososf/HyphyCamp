@@ -1,22 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { addSong } from "../../store/songs";
-//import * as sessionActions from "../../store/session";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { editSong } from "../../store/songs";
+import { useParams, useHistory } from "react-router-dom";
 
-function AddSong({setShowModal}) {
+function EditSong() {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
-  const [url, setUrl] = useState("");
-  const [errors, setErrors] = useState([]);
+  const history = useHistory();
+  const { songId } = useParams();
+  const TRACKID = useSelector((store) => store.songReducer?.songs[songId]);
   const id = useSelector((state) => state.session.user?.id);
+  const [name, setName] = useState(TRACKID.name);
+  const [imgUrl, setImgUrl] = useState(TRACKID.imgUrl);
+  const [url, setUrl] = useState(TRACKID.url);
+  const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-      setShowModal(false)
-      return dispatch(addSong({ name, imgUrl, url }, id));
-  };
-  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+    const editedSong = dispatch(editSong({ name, imgUrl, url }, TRACKID.id));
+    if (editedSong) {
+        history.push(`/artists/${id}`);
+     }}
+      
+
+const handleCancelClick = (e) => {
+  e.preventDefault();
+  history.push(`/artists/${id}`);
+};
+
   useEffect(() => {
     const errors = [];
     if (!name) errors.push("Name field is required");
@@ -26,7 +36,7 @@ function AddSong({setShowModal}) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="addSongForm">
+      <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error) => (
             <li key={error}>{error}</li>
@@ -56,11 +66,14 @@ function AddSong({setShowModal}) {
         />
         <br />
         <button type="submit" disabled={errors.length > 0}>
-          Add Track
+          Update Track
         </button>
       </form>
+      <button type="button" onClick={handleCancelClick}>
+        Cancel
+      </button>
     </>
   );
 }
 
-export default AddSong;
+export default EditSong;
