@@ -27,7 +27,6 @@ function ArtistsProfile() {
     return null;
   }
 function deleteTrack(id) {
-console.log("hello??", id);
 const deletetrack = dispatch(deleteSong(id));
 if (deletetrack) {
   window.location.reload();
