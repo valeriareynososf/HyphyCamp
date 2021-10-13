@@ -73,7 +73,7 @@ export const editSong = (song, id) => async (dispatch) => {
   if (response.ok) {
   const data = await response.json();
   dispatch(add_song(data));
-  return response;
+  return data;
   }
 };
 const initialState = { songs: null };

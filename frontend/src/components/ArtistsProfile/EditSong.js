@@ -42,9 +42,10 @@ function EditSong({tracks}) {
           if (editedSong) {
               history.push(`/artists/${id}`);
      }
+    //dispatch(editSong({ name, imgUrl, url }, TRACKID.id));
       }
 const handleCancelClick = (e) => {
-  //e.preventDefault();
+  e.preventDefault();
   history.push(`/artists/${id}`);
 };
     //};
@@ -87,10 +88,11 @@ const handleCancelClick = (e) => {
         />
         <br />
         <button type="submit">Update Track</button>
-        <button type="button" onClick={handleCancelClick}>
+        
+      </form>
+      <button type="button" onClick={handleCancelClick}>
           Cancel
         </button>
-      </form>
     </>
   );
 }
