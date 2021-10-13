@@ -2,32 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editSong } from "../../store/songs";
 //import { singleSong } from "../../store/songs"
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 //import { singleUser } from "../../store/singleuser";
 //import { artistsSongs } from "../../store/songs";
 //const songs = useSelector((state) => state.songReducer.songs);
 function EditSong({tracks}) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { songId } = useParams();
   const song = useSelector((store) => store.songReducer?.songs);
   const TRACKID = useSelector((store) => store.songReducer?.songs[songId]);
   console.log("PLEASE WPRK", TRACKID);
   //array of id songs
-  const arrayId = Object.values(song).map((song) => song.id);
-  //const song_id = tracks.find((tracks) => tracks.id === songId);
-  //    const song_id = useSelector((state) => {
-  //      return songid.map((IDsong) => state.song_id[IDsong]);
-  //    });
-  //console.log("is this working??", song_id);
-  //    console.log("PLEASESE", song_id)
+  //const arrayId = Object.values(song).map((song) => song.id);
   const id = useSelector((state) => state.session.user?.id);
   //const songid = useSelector((store) => store.songReducer.songs?.id);
   //console.log("this is the id", songid)
   //const song = useSelector((store) => store.songReducer?.songs);
   //const songid = useSelector((store) => store.songReducer?.songs.id);
-  console.log("hello?", song);
-  console.log("IS THIS THE ID?!", TRACKID.name);
+  //console.log("hello?", song);
+  //console.log("IS THIS THE ID?!", TRACKID.name);
   //const songid = Object.values(song).map((song) => song.id);
   // console.log("IS THIS THE NAMEarray", songid)
   //const user = useSelector((state) => state.single.main);
@@ -42,11 +37,17 @@ function EditSong({tracks}) {
       if (!name) setErrors(["Name field is required"]);
       if (!url) setErrors(["A url to the track is required"]);
       //   if (!imgUrl) setErrors(["An img field is required"]);
-      if (!errors.length) {
-        setErrors([]);
-          dispatch(editSong({ name, imgUrl, url }, TRACKID.id));
+      //if (!errors.length) {
+          const editedSong = dispatch(editSong({ name, imgUrl, url }, TRACKID.id));
+          if (editedSong) {
+              history.push(`/artists/${id}`);
+     }
       }
-    };
+const handleCancelClick = (e) => {
+  //e.preventDefault();
+  history.push(`/artists/${id}`);
+};
+    //};
 //   useEffect(() => {
 //     dispatch(editSong({ name, imgUrl, url }, TRACKID));
 //   }, [dispatch]);
@@ -86,6 +87,9 @@ function EditSong({tracks}) {
         />
         <br />
         <button type="submit">Update Track</button>
+        <button type="button" onClick={handleCancelClick}>
+          Cancel
+        </button>
       </form>
     </>
   );
