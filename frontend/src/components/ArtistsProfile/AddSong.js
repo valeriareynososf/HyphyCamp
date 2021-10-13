@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addSong } from "../../store/songs";
 //import * as sessionActions from "../../store/session";
@@ -13,15 +13,16 @@ function AddSong({setShowModal}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name) setErrors(["Name field is required"]);
-    if (!url) setErrors(["A url to the track is required"]);
-    //   if (!imgUrl) setErrors(["An img field is required"]);
-    if (!errors.length) {
-      setErrors([]);
       setShowModal(false)
       return dispatch(addSong({ name, imgUrl, url }, id));
-    }
   };
+  
+  useEffect(() => {
+    const errors = [];
+    if (!name) errors.push("Name field is required");
+    if (!url) errors.push("A url to the track is required");
+    setErrors(errors);
+  }, [name, url]);
 
   return (
     <>
@@ -54,7 +55,9 @@ function AddSong({setShowModal}) {
           onChange={(e) => setUrl(e.target.value)}
         />
         <br />
-        <button type="submit">Add Track</button>
+        <button type="submit" disabled={errors.length > 0}>
+          Add Track
+        </button>
       </form>
     </>
   );
