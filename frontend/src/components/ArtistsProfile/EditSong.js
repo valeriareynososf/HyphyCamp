@@ -7,11 +7,12 @@ import { useParams, useHistory } from "react-router-dom";
 //import { singleUser } from "../../store/singleuser";
 //import { artistsSongs } from "../../store/songs";
 //const songs = useSelector((state) => state.songReducer.songs);
-function EditSong({tracks}) {
+function EditSong() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { songId } = useParams();
   const song = useSelector((store) => store.songReducer?.songs);
+  
   const TRACKID = useSelector((store) => store.songReducer?.songs[songId]);
   console.log("PLEASE WPRK", TRACKID);
   //array of id songs
@@ -58,7 +59,7 @@ const handleCancelClick = (e) => {
   //   }, [user.id, dispatch]);
   return (
     <>
-      <form onClick={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error) => (
             <li key={error}>{error}</li>
