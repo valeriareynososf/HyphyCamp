@@ -106,7 +106,7 @@ const commentReducer = (state = initialState, action) => {
       });
       return {
         ...state,
-        songs: { ...allComments },
+        comments: { ...allComments },
       };
     }
     case ONE_COMMENT: {
@@ -114,13 +114,13 @@ const commentReducer = (state = initialState, action) => {
     }
     case REMOVE_COMMENT: {
       const newState = { ...state };
-      delete newState[action.song];
+      delete newState[action.comment];
       return newState;
     }
     case ADD_COMMENT:
       newState = Object.assign({}, state);
-      newState.songs = {
-        ...newState.songs,
+      newState.comments = {
+        ...newState.comments,
         [action.payload.id]: action.payload,
       };
       return newState;
