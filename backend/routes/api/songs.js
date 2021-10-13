@@ -20,7 +20,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
   })
 );
 
-router.put("/:id(\\d+)",requireAuth,asyncHandler(async (req, res) => {
+router.put("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
     const song = await Song.findByPk(req.params.id);
     const { name, imgUrl, url } = req.body;
     const track = await song.update({
