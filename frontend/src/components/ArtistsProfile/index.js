@@ -6,6 +6,7 @@ import { singleUser } from "../../store/singleuser";
 import { artistsSongs } from "../../store/songs";
 import { Modal } from "../../context/Modal";
 import AddSong from "./AddSong"
+import { deleteSong } from "../../store/songs";
 
 import "./profile.css";
 
@@ -25,6 +26,14 @@ function ArtistsProfile() {
   if (!songs) {
     return null;
   }
+function deleteTrack(id) {
+console.log("hello??", id);
+const deletetrack = dispatch(deleteSong(id));
+if (deletetrack) {
+  window.location.reload();
+}
+}
+  
   return (
     <div className="container">
       <div className="songsList">
@@ -46,7 +55,11 @@ function ArtistsProfile() {
                 {id === song.artistId ? (
                   <Link to={`/songs/${song.id}/edit`}>edit track</Link>
                 ) : null}
-                {id === song.artistId ? <button>delete</button> : null}
+                {id === song.artistId ? (
+                  <button onClick={() => deleteTrack(song.id)}>
+                    delete
+                  </button>
+                ) : null}
               </div>
             ))}
           </div>
