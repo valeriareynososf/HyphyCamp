@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addSong } from "../../store/songs";
-import * as sessionActions from "../../store/session";
+//import * as sessionActions from "../../store/session";
 
 function AddSong({setShowModal}) {
   const dispatch = useDispatch();

@@ -9,6 +9,7 @@ import ArtistsPage from "./components/Artistspage";
 import SongsPage from "./components/SongsPage";
 import ArtistsProfile from "./components/ArtistsProfile"
 import {getUser} from "./store/users";
+import EditSong from "./components/ArtistsProfile/EditSong";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,8 +38,11 @@ function App() {
         <Route path="/artists/:userId" exact>
           <ArtistsProfile />
         </Route>
-        <Route path="/songs">
+        <Route path="/songs" exact>
           <SongsPage />
+        </Route>
+        <Route path="/songs/:songId/edit" exact>
+          <EditSong />
         </Route>
       </Switch>
     </nav>

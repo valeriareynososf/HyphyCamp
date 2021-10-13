@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-//import { useEffect } from "react";
+import {Link} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { singleUser } from "../../store/singleuser";
@@ -43,7 +43,9 @@ function ArtistsProfile() {
                 <br />
                 <audio src={song.url} controls />
                 <img src={song.imgUrl} alt="ArtistImage" className="songImg" />
-                {id === song.artistId ? <button>edit track</button> : null}
+                {id === song.artistId ? (
+                  <Link to={`/songs/${song.id}/edit`}>edit track</Link>
+                ) : null}
                 {id === song.artistId ? <button>delete</button> : null}
               </div>
             ))}
