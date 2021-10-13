@@ -32,7 +32,7 @@ export const singleUser = (id) => async (dispatch) => {
 };
 
 const initialState = {artists: null};
-const sortList = [];
+// const sortList = [];
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
