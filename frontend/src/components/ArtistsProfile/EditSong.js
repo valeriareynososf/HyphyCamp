@@ -16,7 +16,7 @@ function EditSong() {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-    const editedSong = dispatch(editSong({ name, imgUrl, url }, TRACKID.id));
+    const editedSong = dispatch(editSong({ name, imgUrl, url }, songId));
     if (editedSong) {
         history.push(`/artists/${id}`);
      }}
