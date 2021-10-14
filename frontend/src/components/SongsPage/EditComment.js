@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editComment } from "../../store/comments";
 
-function EditComment({ comment, setShowModal, id }) {
+function EditComment({ comment, setShowModal}) {
     const dispatch = useDispatch();
   const [content, setContent] = useState(comment.content);
   const [errors, setErrors] = useState([]);
@@ -18,8 +18,17 @@ function EditComment({ comment, setShowModal, id }) {
    setErrors(errors);
  }, [content]);
 
+ const handleCancelClick = (e) => {
+setShowModal(false)
+ };
+ 
   return (
     <>
+      <button type="button" onClick={handleCancelClick}>
+        <span role="img" aria-label="cancel">
+          ｘ
+        </span>
+      </button>
       <form onSubmit={handleSubmit} className="addSongForm">
         <label>Edit your Comment</label>
         <br />

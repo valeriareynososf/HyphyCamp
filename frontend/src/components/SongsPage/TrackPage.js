@@ -41,10 +41,6 @@ function deleteBtn(id) {
     window.location.reload();
   }
 }
-function editBtn(id, content){
-  console.log("EDITTINGGG", id, content);
-  
-}
 
   return (
     <div>
@@ -61,7 +57,7 @@ function editBtn(id, content){
                     <span key={artist.id}>
                       {songs.artistId === artist.id ? (
                         <Link key={artist.id} to={`/artists/${artist.id}`}>
-                          {artist.username}:
+                          {artist.username}
                         </Link>
                       ) : null}
                     </span>
@@ -97,7 +93,6 @@ function editBtn(id, content){
             <div key={comment.id}>
               {comment.content}
               {id === comment.userId ? (
-                // <button onClick={() => editBtn(comment.id, comment.content)}>edit</button>
                 <>
                   <button onClick={() => setShowModal(true)}>
                     Edit Comment{" "}
@@ -107,7 +102,6 @@ function editBtn(id, content){
                       <EditComment
                         setShowModal={setShowModal}
                         comment={comment}
-                        id={comment.id}
                       />
                     </Modal>
                   )}

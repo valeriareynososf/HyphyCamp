@@ -24,14 +24,23 @@ function AddSong({setShowModal}) {
     setErrors(errors);
   }, [name, url]);
 
+ const handleCancelClick = (e) => {
+   setShowModal(false);
+ };
+
   return (
     <>
+      <button type="button" onClick={handleCancelClick}>
+        <span role="img" aria-label="cancel">
+          ｘ
+        </span>
+      </button>
       <form onSubmit={handleSubmit} className="addSongForm">
-        <ul>
+        {/* <ul>
           {errors.map((error) => (
             <li key={error}>{error}</li>
           ))}
-        </ul>
+        </ul> */}
         <label>Track Name</label>
         <input
           type="text"
