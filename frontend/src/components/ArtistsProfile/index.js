@@ -20,7 +20,9 @@ function ArtistsProfile() {
 
   useEffect(() => {
     dispatch(singleUser(+userId));
-    dispatch(artistsSongs(user.id));
+    if (user.id){
+       dispatch(artistsSongs(user.id));
+    }
   }, [user.id, dispatch, userId]);
 
   if (!songs) {
