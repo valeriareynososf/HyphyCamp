@@ -21,7 +21,7 @@ function ArtistsProfile() {
   useEffect(() => {
     dispatch(singleUser(+userId));
     dispatch(artistsSongs(user.id));
-  }, [user.id, dispatch]);
+  }, [user.id, dispatch, userId]);
 
   if (!songs) {
     return null;
@@ -52,12 +52,12 @@ if (deletetrack) {
                 <audio src={song.url} controls />
                 <img src={song.imgUrl} alt="ArtistImage" className="songImg" />
                 {id === song.artistId ? (
-                  <Link to={`/songs/${song.id}/edit`}>edit track</Link>
+                  <Link to={`/songs/${song.id}/edit`} key={song.id}>
+                    edit track
+                  </Link>
                 ) : null}
                 {id === song.artistId ? (
-                  <button onClick={() => deleteTrack(song.id)}>
-                    delete
-                  </button>
+                  <button onClick={() => deleteTrack(song.id)}>delete</button>
                 ) : null}
               </div>
             ))}

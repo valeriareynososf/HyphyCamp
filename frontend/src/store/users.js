@@ -3,9 +3,10 @@ import { csrfFetch } from "./csrf";
 const LOAD = "users/LOAD";
  const ADD_ONE = "users/ADD_ONE";
 
-const load = (users) => ({
+const load = (users, id) => ({
   type: LOAD,
   payload: users,
+  id
 });
 
 const oneUser = (users) => ({
