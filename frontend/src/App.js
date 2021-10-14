@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import "./index.css";
 import ArtistsPage from "./components/Artistspage";
 import SongsPage from "./components/SongsPage";
+import TrackPage from "./components/SongsPage/TrackPage";
 import ArtistsProfile from "./components/ArtistsProfile"
 import {getUser} from "./store/users";
 import EditSong from "./components/ArtistsProfile/EditSong";
@@ -40,6 +41,11 @@ function App() {
         </Route>
         <Route path="/songs" exact>
           <SongsPage />
+        </Route>        <Route path="/songs" exact>
+          <SongsPage />
+        </Route>
+            <Route path="/songs/:songId" exact>
+          <TrackPage />
         </Route>
         <Route path="/songs/:songId/edit" exact>
           <EditSong />
