@@ -32,6 +32,13 @@ export const getComments = () => async (dispatch) => {
   dispatch(load(comments));
   return response;
 };
+//get comments from song
+export const songComments = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/songs/${id}/comments`);
+  const comments = await response.json();
+  dispatch(load(comments));
+  return response;
+};
 
 //get single comment
 export const singleComment = (id) => async (dispatch) => {
