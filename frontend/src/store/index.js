@@ -4,6 +4,7 @@ import sessionReducer from "./session";
 import userReducer from "./users"
 import singleReducer from "./singleuser"
 import songReducer from "./songs";
+import commentReducer from "./comments"
 
 const rootReducer = combineReducers({
   // add reducer functions here
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   userReducer,
   single: singleReducer,
   songReducer,
+  commentReducer,
 });
 
 let enhancer;

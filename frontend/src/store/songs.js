@@ -113,7 +113,7 @@ const songReducer = (state = initialState, action) => {
       };
     }
     case ONE_SONG: {
-      return { ...state, main: action.payload };
+      return { ...state, songs:action.payload };
     }
     case REMOVE_ITEM: {
       const newState = { ...state };

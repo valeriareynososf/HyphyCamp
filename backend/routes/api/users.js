@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, Song } = require("../../db/models");
+const { User, Song, Comment } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -53,7 +53,7 @@ router.get("/:id(\\d+)",
   })
 );
 
-
+//get users songs
 router.get('/:id(\\d+)/songs', asyncHandler(async (req, res) => {
    const artistId = req.params.id;
     const user = await User.getCurrentUserById(artistId);
@@ -65,7 +65,7 @@ router.get('/:id(\\d+)/songs', asyncHandler(async (req, res) => {
   return res.json(songs);
 }));
 
-
+//create song
 router.post("/:id(\\d+)/songs", requireAuth, asyncHandler(async (req, res) => {
     const { name, imgUrl, url } = req.body;
     const artistId = req.params.id;
@@ -79,5 +79,34 @@ router.post("/:id(\\d+)/songs", requireAuth, asyncHandler(async (req, res) => {
     return res.json(songs);
   })
 );
+
+//get users comments
+router.get('/:id(\\d+)/comments', asyncHandler(async (req, res) => {
+   const userId = req.params.id;
+     const comments = await Comment.findAll({
+      where: {
+        userId,
+      },
+    });
+  return res.json(comments);
+}));
+
+//create comments ADD AUTH
+// router.post(
+//   "/:id(\\d+)/comments",
+//   asyncHandler(async (req, res) => {
+//     const { content } = req.body;
+//     const userId = req.params.id;
+//     const user = await User.getCurrentUserById(user.id);
+//     const songId = await Song.findByPk(req.params.id);
+//     const comments = await Comment.create({
+//       userId,
+//       songId,
+//       content,
+//     });
+//     return res.json(comments);
+//   })
+// );
+
 
 module.exports = router;
