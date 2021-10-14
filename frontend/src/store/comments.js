@@ -60,10 +60,10 @@ export const usersComments = (id) => async (dispatch) => {
 //add comment
 export const addComment = (comment, id) => async (dispatch) => {
   const { content } = comment;
-  const response = await csrfFetch(`/api/users/${id}/comments`, {
+  const response = await csrfFetch(`/api/songs/${id}/comments`, {
     method: "POST",
     body: JSON.stringify({
-      content
+      content,
     }),
   });
   const data = await response.json();

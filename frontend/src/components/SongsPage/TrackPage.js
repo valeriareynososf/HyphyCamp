@@ -4,6 +4,8 @@ import { useParams, Link } from "react-router-dom";
 import { getUser } from "../../store/users";
 import {singleSong } from "../../store/songs";
 import { songComments } from "../../store/comments";
+import { addComment } from "../../store/comments";
+import { deleteComment } from "../../store/comments";
 
 function TrackPage() {
   const dispatch = useDispatch();
@@ -11,15 +13,31 @@ function TrackPage() {
   const songs = useSelector((state) => state.songReducer?.songs);
 const user = useSelector((store) => store.userReducer.artists);
 const comments = useSelector((store) => store.commentReducer.comments);
+const id = useSelector((state) => state.session.user?.id);
+
+const [content, setContent] = useState("");
+const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getUser());
     dispatch(songComments(+songId));
     dispatch(singleSong(+songId));
-  }, [ dispatch, songId]);
+    const errors = [];
+    if (!content) errors.push("Content required");
+    setErrors(errors);
+  }, [ dispatch, songId, content]);
 
- //const userid = songs.artistId;
-console.log("are these comments", comments)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setContent("")
+    return dispatch(addComment({ content }, songId));
+  };
+function deleteBtn(id) {
+  const deletetrack = dispatch(deleteComment(id));
+  if (deletetrack) {
+    window.location.reload();
+  }
+}
   return (
     <div>
       <h2>song here</h2>
@@ -49,10 +67,18 @@ console.log("are these comments", comments)
         </div>
       ) : null}
       <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>Add A Comment</label>
           <br />
-            <input type="text" />
+          <input
+            type="text"
+            value={content}
+            required
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button type="submit" disabled={errors.length > 0}>
+            Add Comment
+          </button>
         </form>
       </div>
       Comments:
@@ -60,13 +86,21 @@ console.log("are these comments", comments)
         <div>
           {Object.values(comments).map((comment) => (
             <div key={comment.id}>
-            {comment.content}
+              {comment.content}
+              {id === comment.userId ? (
+                <button onClick={() => deleteBtn(comment.id)}>delete</button>
+              ) : null}
             </div>
-            ))}
+          ))}
         </div>
       ) : null}
     </div>
   );
 }
+
+//   {id === commment.userId ? (
+//     <button onClick={() => deleteBtn(comment.id)}>delete</button>
+//   ) : null;
+
 
 export default TrackPage;
