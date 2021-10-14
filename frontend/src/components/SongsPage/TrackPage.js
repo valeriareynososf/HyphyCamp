@@ -6,7 +6,6 @@ import {singleSong } from "../../store/songs";
 import { songComments } from "../../store/comments";
 import { addComment } from "../../store/comments";
 import { deleteComment } from "../../store/comments";
-import {editComment} from "../../store/comments";
 import { Modal } from "../../context/Modal";
 import EditComment from "./EditComment";
 
@@ -99,14 +98,20 @@ function editBtn(id, content){
               {comment.content}
               {id === comment.userId ? (
                 // <button onClick={() => editBtn(comment.id, comment.content)}>edit</button>
-              <>
-                <button onClick={() => setShowModal(true)}>Edit Comment </button>
-                    {showModal && (
-                      <Modal onClose={() => setShowModal(false)}>
-                        <EditComment setShowModal={setShowModal} />
-                      </Modal>
-                    )}
-                    </>
+                <>
+                  <button onClick={() => setShowModal(true)}>
+                    Edit Comment{" "}
+                  </button>
+                  {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                      <EditComment
+                        setShowModal={setShowModal}
+                        comment={comment}
+                        id={comment.id}
+                      />
+                    </Modal>
+                  )}
+                </>
               ) : null}
               {id === comment.userId ? (
                 <button onClick={() => deleteBtn(comment.id)}>delete</button>
