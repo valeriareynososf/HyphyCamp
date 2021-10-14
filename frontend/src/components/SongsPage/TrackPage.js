@@ -38,6 +38,9 @@ function deleteBtn(id) {
     window.location.reload();
   }
 }
+function editBtn(id){
+  console.log("EDITTINGGG", id)
+}
   return (
     <div>
       <h2>song here</h2>
@@ -88,6 +91,9 @@ function deleteBtn(id) {
             <div key={comment.id}>
               {comment.content}
               {id === comment.userId ? (
+                <button onClick={() => editBtn(comment.id)}>edit</button>
+              ) : null}
+              {id === comment.userId ? (
                 <button onClick={() => deleteBtn(comment.id)}>delete</button>
               ) : null}
             </div>
@@ -98,9 +104,6 @@ function deleteBtn(id) {
   );
 }
 
-//   {id === commment.userId ? (
-//     <button onClick={() => deleteBtn(comment.id)}>delete</button>
-//   ) : null;
 
 
 export default TrackPage;
