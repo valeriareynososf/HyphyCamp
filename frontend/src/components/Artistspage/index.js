@@ -6,10 +6,10 @@ import "./Artistspage.css";
 
 function ArtistsPage() {
 const dispatch = useDispatch();
-const user = useSelector((store) => store.userReducer.artists);
+const user = useSelector((store) => store.userReducer?.artists);
 
 useEffect(() => {
-  dispatch(getUser(user));
+  dispatch(getUser());
 }, [dispatch]);
 
   return (
