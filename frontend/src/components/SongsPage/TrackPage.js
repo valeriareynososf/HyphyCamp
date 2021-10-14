@@ -6,12 +6,16 @@ import {singleSong } from "../../store/songs";
 import { songComments } from "../../store/comments";
 import { addComment } from "../../store/comments";
 import { deleteComment } from "../../store/comments";
+import {editComment} from "../../store/comments";
+import { Modal } from "../../context/Modal";
+import EditComment from "./EditComment";
 
 function TrackPage() {
   const dispatch = useDispatch();
   const { songId } = useParams();
   const songs = useSelector((state) => state.songReducer?.songs);
 const user = useSelector((store) => store.userReducer.artists);
+  const [showModal, setShowModal] = useState(false);
 const comments = useSelector((store) => store.commentReducer.comments);
 const id = useSelector((state) => state.session.user?.id);
 
@@ -38,9 +42,11 @@ function deleteBtn(id) {
     window.location.reload();
   }
 }
-function editBtn(id){
-  console.log("EDITTINGGG", id)
+function editBtn(id, content){
+  console.log("EDITTINGGG", id, content);
+  
 }
+
   return (
     <div>
       <h2>song here</h2>
@@ -78,6 +84,7 @@ function editBtn(id){
             value={content}
             required
             onChange={(e) => setContent(e.target.value)}
+            className="inputBox"
           />
           <button type="submit" disabled={errors.length > 0}>
             Add Comment
@@ -91,7 +98,15 @@ function editBtn(id){
             <div key={comment.id}>
               {comment.content}
               {id === comment.userId ? (
-                <button onClick={() => editBtn(comment.id)}>edit</button>
+                // <button onClick={() => editBtn(comment.id, comment.content)}>edit</button>
+              <>
+                <button onClick={() => setShowModal(true)}>Edit Comment </button>
+                    {showModal && (
+                      <Modal onClose={() => setShowModal(false)}>
+                        <EditComment setShowModal={setShowModal} />
+                      </Modal>
+                    )}
+                    </>
               ) : null}
               {id === comment.userId ? (
                 <button onClick={() => deleteBtn(comment.id)}>delete</button>
