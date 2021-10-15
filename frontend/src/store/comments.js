@@ -67,7 +67,6 @@ export const addComment = (comment, id) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  console.log(data);
   dispatch(add_comment(data));
   return response;
 };
