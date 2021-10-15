@@ -8,6 +8,7 @@ import { addComment } from "../../store/comments";
 import { deleteComment } from "../../store/comments";
 import { Modal } from "../../context/Modal";
 import EditComment from "./EditComment";
+import "./trackPage.css";
 
 function TrackPage() {
   const dispatch = useDispatch();
@@ -43,18 +44,16 @@ function deleteBtn(id) {
 }
 
   return (
-    <div>
-      <h2>song here</h2>
-      <br />
+    <div className ="containerTrackPage">
       {songs !== null ? (
-        <div>
-          <div key={songs.id} className="userSongs">
-            <h3>
-              {songs.name} by{" "}
+          <div key={songs.id} className="userTracks">
+            <h2 class="titleSong">{songs.name}</h2>
+            <h3 className="titleArtists">
+              by{" "}
               {user !== null ? (
                 <>
                   {Object.values(user).map((artist) => (
-                    <span key={artist.id}>
+                    <span key={artist.id} className="artistsN">
                       {songs.artistId === artist.id ? (
                         <Link key={artist.id} to={`/artists/${artist.id}`}>
                           {artist.username}
@@ -65,10 +64,9 @@ function deleteBtn(id) {
                 </>
               ) : null}
             </h3>
-            <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
             <audio src={songs.url} controls />
+            <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
           </div>
-        </div>
       ) : null}
       <div>
         <form onSubmit={handleSubmit}>
