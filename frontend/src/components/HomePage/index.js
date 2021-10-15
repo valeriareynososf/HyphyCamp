@@ -13,9 +13,6 @@ function HomePage() {
   return (
     <nav>
       <div className="homeContainer">
-        <>
-          <Link to="/artists">go to artists</Link>
-        </>
         <img src={record} alt="record player" className="recordImg" />
         <img src={sfbridge} alt="bridge" className="bridgeImg" />
         <img src={car} alt="car" className="carImg" />
