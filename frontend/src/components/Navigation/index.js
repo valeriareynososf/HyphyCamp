@@ -66,7 +66,7 @@ const demonLogin = async () => {
           <Link to="/artists">All Artists</Link>
         </span>
         <span className="allSongs">
-          <Link to="/songs">All Songs</Link>
+          <Link to="/songs">Music</Link>
         </span>
       </div>
       {/* <div>{paragraph}</div> */}

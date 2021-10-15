@@ -65,7 +65,7 @@ function deleteBtn(id) {
                 </>
               ) : null}
             </h3>
-            <img src={songs.imgUrl} alt="SongImage" className="imgUrl" />
+            <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
             <audio src={songs.url} controls />
           </div>
         </div>
