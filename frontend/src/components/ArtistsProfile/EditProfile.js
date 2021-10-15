@@ -8,7 +8,7 @@ import { singleUser } from "../../store/singleuser";
 function EditProfile() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { userId } = useParams();
+    //const { userId } = useParams();
     const user = useSelector((state) => state.single.main);
 const id = useSelector((state) => state.session.user?.id);
 

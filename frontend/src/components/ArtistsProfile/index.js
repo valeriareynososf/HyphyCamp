@@ -38,13 +38,6 @@ if (deletetrack) {
   return (
     <div className="container">
       <div className="songsList">
-<button onClick={() => setShowModal(true)}>add a track </button>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <AddSong setShowModal={setShowModal} />
-          </Modal>
-        )}
-        <br />
         {songs !== null ? (
           <div>
             {Object.values(songs).map((song) => (
@@ -69,6 +62,19 @@ if (deletetrack) {
       <div className="profileInfo">
         <img src={user.imgUrl} alt="ArtistImage" className="profileImg" />
         <div>{user.username}</div>
+        {user.id === id ? (
+          <>
+              <button onClick={() => setShowModal(true)}>add a track </button>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <AddSong setShowModal={setShowModal} />
+          </Modal>
+        )}
+            <Link to={`/artists/${id}/edit`} key={id}>
+              edit profile
+            </Link>
+            </>
+        ) : null}
       </div>
     </div>
   );
