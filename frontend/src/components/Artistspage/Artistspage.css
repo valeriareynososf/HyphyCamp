@@ -3,11 +3,18 @@
 } */
 .allArtistsContainer {
     padding-top: 15px;
-     margin: 0 400px;
-  display: grid;
+     margin: 0 430px;
+  /* display: grid;
   grid-template-columns: repeat(4, 1fr);
    border: 3px solid red;
-   grid-gap: 15px;
+   grid-gap: 15px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* margin-top: 50px; */
+    margin-left: 140px;
+    margin-right: 140px;
+    border: 3px solid red;
 }
 
 .artDiv {
@@ -16,6 +23,12 @@
   /* width: auto;
   height: auto; */
     border: 3px solid purple;
+      height: 400px;
+    width: 300px;
+    object-fit: none;
+    object-position: 50% .5;
+    padding: 3px;
+    width: 10 vw;
    
 }
 .artDiv a {
@@ -26,16 +39,34 @@
 .artDiv a:hover {
     text-decoration: underline;
 }
-.linkInfoA {
-    border: 3px solid darkslategray;
+/* .linkInfoA {
+    border: 3px solid red;
     /* height: 100%; */
-}
+/* } */ 
 .imgUrl {
     /* width: 200px;
     height: 200px; */
-    width: 100%;
-    height: 100%;
+    width: 93%;
+    height: 90%;
     /* position: center; */
     /* height: 100%; */
     border: 3px dotted yellow;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-left: 140px;
+    margin-right: 140px;
+}
+
+.gallery_image {
+    height: 400px;
+    width: 300px;
+    object-fit: scale-down;
+    object-position: 50% .5;
+    padding: 3px;
+    width: 10 vw;
 }
