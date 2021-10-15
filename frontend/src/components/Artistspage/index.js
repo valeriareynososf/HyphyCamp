@@ -18,7 +18,7 @@ useEffect(() => {
         <>
           {Object.values(user).map((artist) => (
             <div key={artist.id} className="artDiv">
-              <spa className="linkInfoA">
+              <spa className="linkInfo">
               <Link key={artist.id} to={`/artists/${artist.id}`}>
                 {artist.username}:
                 <br />
