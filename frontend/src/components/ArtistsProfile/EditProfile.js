@@ -13,9 +13,9 @@ function EditProfile() {
 const id = useSelector((state) => state.session.user?.id);
 // console.log("THIS ID", id)
 // console.log("THIS USER", user)
-const [email, setEmail] = useState("");
-const [imgUrl, setImgUrl] = useState("");
-const [username, setUsername] = useState("");
+const [email, setEmail] = useState(user.email);
+const [imgUrl, setImgUrl] = useState(user.imgUrl);
+const [username, setUsername] = useState(user.username);
 const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
@@ -40,13 +40,13 @@ const handleCancelClick = (e) => {
   e.preventDefault();
   history.push(`/artists/${id}`);
 };
-useEffect(() => {
-  if (user) {
-    setEmail(user.name);
-    setImgUrl(user.imgUrl);
-    setUsername(user.url);
-  }
-}, [user]);
+// useEffect(() => {
+//   if (user) {
+//     setEmail(user.name);
+//     setImgUrl(user.imgUrl);
+//     setUsername(user.url);
+//   }
+// }, [user]);
 
   return (
     <>

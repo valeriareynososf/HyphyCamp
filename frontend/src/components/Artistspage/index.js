@@ -14,23 +14,21 @@ useEffect(() => {
 
   return (
   <div className="allArtistsContainer">
-    <div className="artistsList">
-      <div>
-      </div>{" "}
       {user !== null ? (
-        <ul className="listOfArtists">
+        <>
           {Object.values(user).map((artist) => (
-            <li key={artist.id}>
+            <div key={artist.id} className="artDiv">
+              <spa className="linkInfoA">
               <Link key={artist.id} to={`/artists/${artist.id}`}>
                 {artist.username}:
                 <br />
                 <img src={artist.imgUrl} alt="ArtistImage" className="imgUrl" />
               </Link>
-            </li>
+              </spa>
+            </div>
           ))}
-        </ul>
+        </>
       ) : null}
-    </div>
     </div>
   );
 }

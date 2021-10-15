@@ -2,22 +2,37 @@
     background-color: red;
 } */
 .allArtistsContainer {
-     margin: 0 100px;
-    padding: 35px 30px 80px;
-    border: 3px solid orange;
-    /* display: grid;
-    grid-template-columns: repeat(4,1fr); */
-  /* grid-auto-rows: 200px; */
-  display: flex;
+    padding-top: 15px;
+     margin: 0 400px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+   border: 3px solid red;
+   grid-gap: 15px;
 }
-.listOfArtists {
+
+.artDiv {
     list-style: none;
+    background-color: #8ca0ff;
+  width: auto;
+  height: auto;
+    border: 3px solid purple;
+   
+}
+.artDiv a {
+    text-decoration: none;
+    color: #161113;
+    font-weight: 600;
+}
+.artDiv a:hover {
+    text-decoration: underline;
+}
+.linkInfoA {
+    border: 3px solid darkslategray;
+   position: relative;
+    height: 100%;
 }
 .imgUrl {
     width: 150px;
     height: 150px;
-}
-
-.artistsList {
-    margin-left: 45px;
+    border: 3px dotted yellow;
 }
