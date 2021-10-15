@@ -11,6 +11,7 @@ import TrackPage from "./components/SongsPage/TrackPage";
 import ArtistsProfile from "./components/ArtistsProfile"
 import {getUser} from "./store/users";
 import EditSong from "./components/ArtistsProfile/EditSong";
+import EditProfile from "./components/ArtistsProfile/EditProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,12 +42,15 @@ function App() {
         </Route>
         <Route path="/songs" exact>
           <SongsPage />
-        </Route> 
-            <Route path="/songs/:songId" exact>
+        </Route>
+        <Route path="/songs/:songId" exact>
           <TrackPage />
         </Route>
         <Route path="/songs/:songId/edit" exact>
           <EditSong />
+        </Route>
+        <Route path="/artists/:userId/edit" exact>
+          <EditProfile />
         </Route>
       </Switch>
     </nav>

@@ -37,7 +37,6 @@ const handleCancelClick = (e) => {
     if (!url) errors.push("A url to the track is required");
     setErrors(errors);
     dispatch(getSongs());
-   
   }, [name, url, dispatch]);
 
 useEffect(() => {

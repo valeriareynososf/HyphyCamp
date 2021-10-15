@@ -60,7 +60,7 @@ const demonLogin = async () => {
       </nav>
       <div className="discoverSentence">
         Discover amazing new music and{" "}
-        <span class="midSentence">directly support</span> the artists who make
+        <span className="midSentence">directly support</span> the artists who make
         it.
         <span className="allArtists">
           <Link to="/artists">All Artists</Link>
