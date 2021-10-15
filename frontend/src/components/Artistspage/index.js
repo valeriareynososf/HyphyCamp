@@ -13,11 +13,12 @@ useEffect(() => {
 }, [dispatch]);
 
   return (
+  <div className="allArtistsContainer">
     <div className="artistsList">
       <div>
       </div>{" "}
       {user !== null ? (
-        <ul>
+        <ul className="listOfArtists">
           {Object.values(user).map((artist) => (
             <li key={artist.id}>
               <Link key={artist.id} to={`/artists/${artist.id}`}>
@@ -29,6 +30,7 @@ useEffect(() => {
           ))}
         </ul>
       ) : null}
+    </div>
     </div>
   );
 }

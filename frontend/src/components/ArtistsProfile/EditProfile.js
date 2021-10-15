@@ -11,8 +11,8 @@ function EditProfile() {
     const { userId } = useParams();
     const user = useSelector((state) => state.single.main);
 const id = useSelector((state) => state.session.user?.id);
-console.log("THIS ID", id)
-console.log("THIS USER", user)
+// console.log("THIS ID", id)
+// console.log("THIS USER", user)
 const [email, setEmail] = useState("");
 const [imgUrl, setImgUrl] = useState("");
 const [username, setUsername] = useState("");

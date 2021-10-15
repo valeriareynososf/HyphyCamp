@@ -3,6 +3,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    list-style-type: none;
+    font-family: Helvetica, sans-serif;
+     color: #161113;
+}
+.proLink a {
+     text-decoration: none;
+      color: #161113;
+      font-weight: 600;
 }
 .navCon {
 margin: 0 145px;

@@ -64,16 +64,20 @@ if (deletetrack) {
         <div>{user.username}</div>
         {user.id === id ? (
           <>
-              <button onClick={() => setShowModal(true)}>add a track </button>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <AddSong setShowModal={setShowModal} />
-          </Modal>
-        )}
-            <Link to={`/artists/${id}/edit`} key={id}>
-              edit profile
-            </Link>
-            </>
+            <button onClick={() => setShowModal(true)}>add a track </button>
+            {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <AddSong setShowModal={setShowModal} />
+              </Modal>
+            )}
+          </>
+        ) : null}
+        {user.id === id && user.id !== 1 ? (
+          <>
+        <Link to={`/artists/${id}/edit`} key={id}>
+          edit profile
+        </Link>
+        </>
         ) : null}
       </div>
     </div>
