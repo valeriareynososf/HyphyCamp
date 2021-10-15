@@ -51,8 +51,6 @@ const demonLogin = async () => {
   return (
     <nav className="navCon">
       <nav className="navbar">
-        {/* <img src={logogray} alt="record player" className="homebBtn" /> */}
-        {/* LOGO BUTTON */}
         <NavLink exact to="/" className="homeLink">
           <img src={logogray} alt="record player" className="homebBtn" />
         </NavLink>

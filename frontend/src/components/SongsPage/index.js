@@ -12,11 +12,6 @@ function SongsPage() {
   }, [dispatch]);
   return (
     <>
-      <h2>hello these are the songs</h2>
-      <div>
-        <Link to="/artists">Back To Artists</Link> | Songs
-      </div>
-
       {song !== null ? (
         <ul>
           {Object.values(song).map((single) => (

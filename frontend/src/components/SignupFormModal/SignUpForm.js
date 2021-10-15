@@ -11,6 +11,7 @@ function SignupForm() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  //const [imgUrl, setImgUrl] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -54,6 +55,13 @@ function SignupForm() {
         onChange={(e) => setUsername(e.target.value)}
         required
       />
+      {/* <label>Profile Image</label>
+      <input
+        type="text"
+        value={imgUrl}
+        onChange={(e) => setImgUrl(e.target.value)}
+        required
+      /> */}
       <br />
       <label>Password</label>
       <input

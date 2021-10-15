@@ -38,7 +38,7 @@ if (deletetrack) {
   return (
     <div className="container">
       <div className="songsList">
-        songs | <button onClick={() => setShowModal(true)}>add a track </button>
+<button onClick={() => setShowModal(true)}>add a track </button>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <AddSong setShowModal={setShowModal} />

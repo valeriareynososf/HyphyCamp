@@ -37,6 +37,17 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     });
   }),
 );
+// Edit
+router.put(
+  "/:id(\\d+)",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const user = await User.findByPk(req.params.id);
+    const { email, username, imgUrl } = req.body;
+    const users = await user.update({ email, username, imgUrl });
+    return res.json(users);
+  })
+);
 
 //users
 router.get("/", asyncHandler(async (req, res) => {

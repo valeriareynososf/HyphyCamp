@@ -15,7 +15,6 @@ useEffect(() => {
   return (
     <div className="artistsList">
       <div>
-        <span>Artists</span> | <Link to="/songs">Songs</Link>
       </div>{" "}
       {user !== null ? (
         <ul>
