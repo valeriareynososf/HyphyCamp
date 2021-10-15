@@ -18,7 +18,6 @@ useEffect(() => {
         <>
           {Object.values(user).map((artist) => (
             <div key={artist.id} className="artDiv">
-              <spa className="linkInfo">
                 <Link key={artist.id} to={`/artists/${artist.id}`}>
                   <img
                     src={artist.imgUrl}
@@ -28,7 +27,6 @@ useEffect(() => {
                   <br />
                   {artist.username}
                 </Link>
-              </spa>
             </div>
           ))}
         </>

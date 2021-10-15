@@ -16,7 +16,7 @@ function SongsPage() {
       {song !== null ? (
         <>
           {Object.values(song).map((single) => (
-            <div key={single.id}>
+            <div key={single.id} className="tracksDiv">
               <Link key={single.id} to={`/songs/${single.id}`}>
                 <img src={single.imgUrl} alt="SongImage" className="allsongImg" />
                 <br />
