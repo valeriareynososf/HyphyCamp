@@ -4,15 +4,22 @@
 import { Link } from "react-router-dom";
 import "./HomePage.css";
 import record from "../../images/record.jpg"
+import sfbridge from "../../images/sfbridge.jpg";
+import car from "../../images/car.jpeg";
 
 function HomePage() {
   //const [showModal, setShowModal] = useState(false);
 
   return (
     <nav>
-      <h2>HOMEPAGE</h2>
-      <p><Link to="/artists">go to artists</Link></p>
-      <img src={record} alt="record player" className="homeImg"/>
+      <div className="homeContainer">
+        <>
+          <Link to="/artists">go to artists</Link>
+        </>
+        <img src={record} alt="record player" className="recordImg" />
+        <img src={sfbridge} alt="bridge" className="bridgeImg" />
+        <img src={car} alt="car" className="carImg" />
+      </div>
     </nav>
   );
 }

@@ -2,7 +2,34 @@ body {
     background-color: rgb(143, 135, 135);
 }
 
-.homeImg {
-    width: 80%;
-    height: 80%;
+.homeContainer {
+display: grid;
+/* grid-template-columns: repeat(2, 1fr); */
+margin: 0 120px;
+    padding: 35px 30px 80px;
+    /* border: 3px solid orange; */
+background-color: black;
+grid-template-areas: 
+            "b b a"
+            "b b c"
+            "b b c";
+}
+
+.recordImg {
+    grid-area: b;
+    width: 600px;
+    height: 600px;
+    /* border: 2px solid red; */
+}
+
+.bridgeImg {
+    grid-area: a;
+  width: 355px;
+    height: 300px;
+}
+
+.carImg {
+    grid-area: c;
+  width: 355px;
+    height: 300px;
 }

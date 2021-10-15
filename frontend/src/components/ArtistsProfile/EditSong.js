@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editSong } from "../../store/songs";
 import { useParams, useHistory } from "react-router-dom";
+import { getSongs } from "../../store/songs";
+//import {singleSong} from "../../store/songs";
 
 function EditSong() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { songId } = useParams();
-  const TRACKID = useSelector((store) => store.songReducer?.songs[songId]);
+  //const TRACKID = useSelector((store) => store.songReducer?.songs[songId]);
+  const TRACKID = useSelector((store) => store.songReducer?.songs?.[songId]);
+
   const id = useSelector((state) => state.session.user?.id);
-  const [name, setName] = useState(TRACKID.name);
-  const [imgUrl, setImgUrl] = useState(TRACKID.imgUrl);
-  const [url, setUrl] = useState(TRACKID.url);
+  const [name, setName] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [url, setUrl] = useState("");
   const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
@@ -32,7 +36,17 @@ const handleCancelClick = (e) => {
     if (!name) errors.push("Name field is required");
     if (!url) errors.push("A url to the track is required");
     setErrors(errors);
-  }, [name, url]);
+    dispatch(getSongs());
+   
+  }, [name, url, dispatch]);
+
+useEffect(() => {
+  if (TRACKID) {
+    setName(TRACKID.name);
+    setImgUrl(TRACKID.imgUrl);
+    setUrl(TRACKID.url);
+  }
+}, [TRACKID]);
 
   return (
     <>

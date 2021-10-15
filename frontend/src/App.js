@@ -41,9 +41,7 @@ function App() {
         </Route>
         <Route path="/songs" exact>
           <SongsPage />
-        </Route>        <Route path="/songs" exact>
-          <SongsPage />
-        </Route>
+        </Route> 
             <Route path="/songs/:songId" exact>
           <TrackPage />
         </Route>

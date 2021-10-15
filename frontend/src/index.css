@@ -1,4 +1,9 @@
+body {
+    margin: 0px;
+    /* margin: 0px 45px; */
+    /* background-color: white; */
+}
 .navigation {
-    margin: 10px 45px;
+     margin: 0px;
     background-color: white;
 }

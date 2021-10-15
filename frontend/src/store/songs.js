@@ -42,6 +42,7 @@ export const singleSong = (id) => async (dispatch) => {
 
 
 export const artistsSongs = (id) => async (dispatch) => {
+  console.log("this is the ID", id)
   const response = await fetch(`/api/users/${id}/songs`);
   if (response.ok) {
     const songs = await response.json();
