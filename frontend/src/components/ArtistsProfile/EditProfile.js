@@ -8,20 +8,23 @@ import { singleUser } from "../../store/singleuser";
 function EditProfile() {
     const dispatch = useDispatch();
     const history = useHistory();
-    //const { userId } = useParams();
+    const { userId } = useParams();
     const user = useSelector((state) => state.single.main);
 const id = useSelector((state) => state.session.user?.id);
-
-const [email, setEmail] = useState(user.email);
-const [imgUrl, setImgUrl] = useState(user.imgUrl);
-const [username, setUsername] = useState(user.username);
+console.log("THIS ID", id)
+console.log("THIS USER", user)
+const [email, setEmail] = useState("");
+const [imgUrl, setImgUrl] = useState("");
+const [username, setUsername] = useState("");
 const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      const editedSong = dispatch(editUser({ email, imgUrl, username }, id));
+      const editedSong = dispatch(
+        editUser({ email, imgUrl, username }, id)
+      );
       if (editedSong) {
-        history.push(`/artists/${id}`);
+        history.push(`/artists/${userId}`);
       }
     };
  useEffect(() => {
@@ -48,6 +51,11 @@ useEffect(() => {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
         <label>Email</label>
         <input
           type="text"
