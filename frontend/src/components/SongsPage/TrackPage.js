@@ -45,7 +45,7 @@ function deleteBtn(id) {
 
   return (
     <div className="containerTrackPage">
-      <div>
+      <div className="innerContainer">
         {songs !== null ? (
           <>
             <div key={songs.id} className="userTracks">
@@ -70,55 +70,61 @@ function deleteBtn(id) {
             </div>
           </>
         ) : null}
-        <div>
-          <form onSubmit={handleSubmit}>
-            <label>Add A Comment</label>
-            <br />
-            <input
-              type="text"
-              value={content}
-              required
-              onChange={(e) => setContent(e.target.value)}
-              className="inputBox"
-            />
-            <button type="submit" disabled={errors.length > 0}>
-              Add Comment
-            </button>
-          </form>
-        </div>
-        Comments:
-        {comments !== null ? (
-          <div>
-            {Object.values(comments).map((comment) => (
-              <div key={comment.id}>
-                {comment.content}
-                {id === comment.userId ? (
-                  <>
-                    <button onClick={() => setShowModal(true)}>
-                      Edit Comment{" "}
+        <div className="commentBlock">
+          <span className="supportedBy">supported by</span>
+          {comments !== null ? (
+            <div className="commentsDiv">
+              {Object.values(comments).map((comment) => (
+                <div key={comment.id}>
+                  {comment.content}
+                  {id === comment.userId ? (
+                    <>
+                      <button onClick={() => setShowModal(true)} className="editCBtn">
+                        Edit Comment{" "}
+                      </button>
+                      {showModal && (
+                        <Modal onClose={() => setShowModal(false)}>
+                          <EditComment
+                            setShowModal={setShowModal}
+                            comment={comment}
+                          />
+                        </Modal>
+                      )}
+                    </>
+                  ) : null}
+                  {id === comment.userId ? (
+                    <button onClick={() => deleteBtn(comment.id)} className="deleteCBtn">
+                      delete
                     </button>
-                    {showModal && (
-                      <Modal onClose={() => setShowModal(false)}>
-                        <EditComment
-                          setShowModal={setShowModal}
-                          comment={comment}
-                        />
-                      </Modal>
-                    )}
-                  </>
-                ) : null}
-                {id === comment.userId ? (
-                  <button onClick={() => deleteBtn(comment.id)}>delete</button>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        ) : null}
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
       <div className="track_Img">
-      {songs !== null ? (
-        <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
-      ) : null}
+        {songs !== null ? (
+          <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
+        ) : null}
+        <form onSubmit={handleSubmit}>
+          <br />
+          <input
+            type="text"
+            value={content}
+            required
+            onChange={(e) => setContent(e.target.value)}
+            className="inputBox"
+          />
+          <br />
+          <button
+            className="commentBtn"
+            type="submit"
+            disabled={errors.length > 0}
+          >
+            Add Comment
+          </button>
+        </form>
       </div>
     </div>
   );

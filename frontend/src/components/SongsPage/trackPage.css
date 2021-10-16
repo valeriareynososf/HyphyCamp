@@ -2,17 +2,19 @@
  margin: 0 300px;
     padding: 35px 30px 80px;
     border: 3px solid orange;
-    /* display: grid;
-    grid-template-columns: repeat(4,1fr); */
-  /* grid-auto-rows: 200px; */
   display: flex;
   justify-content: space-evenly;
   background-color: black;
   height: 1000px;
 }
-
+.userTracks {
+    border: 3px solid green;
+}
+.innerContainer {
+    border: 3px solid plum;
+    width: 400px;
+}
 .titleSong {
-    /* color: rgba(245, 245, 245, 0.783); */
     color: #413f3f;
     font-family: Helvetica, sans-serif;
     font-size: 28px;
@@ -28,16 +30,71 @@ color: #413f3f;
     text-decoration: none;
 }
 .artistsN a:hover{
-    /* color: #0687f5; */
     text-decoration: underline;
 }
 
 .trackUrl {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
 }
 .track_Img {
+    width: 350px;
     border: 3px solid brown;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commentBlock {
+margin-top: 15px;
+}
+.supportedBy {
+    color: #3c3b3b;
+}
+.inputBox {
+height: 100px;
+width: 200px;
+background-color: rgb(211, 207, 207);
+}
+.commentsDiv {
+    margin-top: 15px;
+    color: #363636;
+    font-size: 14px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 30px;
+    border: 2px solid red;
+    width: auto;
+    height: 100px;
+}
+.editCBtn, .commentBtn, .deleteCBtn {
+    color: #0687f5;
+    margin-top: 10px;
+    background-color: #363636;
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+    padding: 6px 5px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.deleteCBtn:hover {
+    background-color: red;
+    color: white;
+}
+.commentBtn:hover {
+    background-color: #0687f5;
+    color: whitesmoke;
+}
+.editCBtn:hover {
+    background-color: rgb(43, 106, 43);
+    color: white;
+}
+.editCBtn, .commentBtn, .deleteCBtn {
+ float: right;
+}
+
+@media (max-width: 1280px) {
+   .containerTrackPage {
+        margin: 0 120px;
+   }
 }
