@@ -72,7 +72,7 @@ function deleteBtn(id) {
         {comments !== null ? (
           <div>
             {Object.values(comments).map((comment) => (
-              <div className="commentBlock"  key={comment.id}>
+              <div className="commentBlock" key={comment.id}>
                 {user !== null ? (
                   <div className="commentsDiv">
                     <img
@@ -81,7 +81,10 @@ function deleteBtn(id) {
                       className="userCImg"
                     />
                     <span className="userCName">
-                      {user[+comment.userId].username}
+                      <Link to={`/artists/${comment.userId}`}>
+                        {" "}
+                        {user[+comment.userId].username}
+                      </Link>
                     </span>
                   </div>
                 ) : null}{" "}
@@ -125,8 +128,8 @@ function deleteBtn(id) {
         ) : null}
         <form onSubmit={handleSubmit}>
           <br />
-          <input
-            type="text"
+          <textarea
+            // type="textarea"
             value={content}
             required
             onChange={(e) => setContent(e.target.value)}
