@@ -16,6 +16,8 @@ function ArtistsProfile() {
   const user = useSelector((state) => state.single.main);
   const songs = useSelector((state) => state.songReducer.songs);
   const [showModal, setShowModal] = useState(false);
+  const [showText, setShowText] = useState(false);
+ const onClick = () => setShowText(true);
   const id = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
@@ -34,7 +36,8 @@ if (deletetrack) {
   window.location.reload();
 }
 }
-  
+
+const Text = () => <div>You clicked the button!</div>;
   return (
     <div className="container">
       <div className="songsList">
@@ -42,6 +45,10 @@ if (deletetrack) {
           <div>
             {Object.values(songs).map((song) => (
               <div key={song.id} className="userSongs">
+                <div>
+                  <button onClick={onClick}>Click me</button>
+                  {showText ? <Text /> : null}
+                </div>
                 <h2>{song.name}</h2>
                 <br />
                 <audio src={song.url} controls />
@@ -74,10 +81,10 @@ if (deletetrack) {
         ) : null}
         {user.id === id && user.id !== 1 ? (
           <>
-        <Link to={`/artists/${id}/edit`} key={id}>
-          edit profile
-        </Link>
-        </>
+            <Link to={`/artists/${id}/edit`} key={id}>
+              edit profile
+            </Link>
+          </>
         ) : null}
       </div>
     </div>
