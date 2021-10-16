@@ -18,7 +18,7 @@ const user = useSelector((store) => store.userReducer.artists);
   const [showModal, setShowModal] = useState(false);
 const comments = useSelector((store) => store.commentReducer.comments);
 const id = useSelector((state) => state.session.user?.id);
-
+console.log("hello??", user)
 const [content, setContent] = useState("");
 const [errors, setErrors] = useState([]);
 
@@ -47,39 +47,52 @@ function deleteBtn(id) {
     <div className="containerTrackPage">
       <div className="innerContainer">
         {songs !== null ? (
-          <>
-            <div key={songs.id} className="userTracks">
-              <h2 class="titleSong">{songs.name}</h2>
-              <h3 className="titleArtists">
-                by{" "}
-                {user !== null ? (
-                  <>
-                    {Object.values(user).map((artist) => (
-                      <span key={artist.id} className="artistsN">
-                        {songs.artistId === artist.id ? (
-                          <Link key={artist.id} to={`/artists/${artist.id}`}>
-                            {artist.username}
-                          </Link>
-                        ) : null}
-                      </span>
-                    ))}
-                  </>
-                ) : null}
-              </h3>
-              <audio src={songs.url} controls />
-            </div>
-          </>
+          <div key={songs.id} className="userTracks">
+            <h2 className="titleSong">{songs.name}</h2>
+            <h3 className="titleArtists">
+              by{" "}
+              {user !== null ? (
+                <>
+                  {Object.values(user).map((artist) => (
+                    <span key={artist.id} className="artistsN">
+                      {songs.artistId === artist.id ? (
+                        <Link key={artist.id} to={`/artists/${artist.id}`}>
+                          {artist.username}
+                        </Link>
+                      ) : null}
+                    </span>
+                  ))}
+                </>
+              ) : null}
+            </h3>
+            <audio src={songs.url} controls />
+          </div>
         ) : null}
-        <div className="commentBlock">
-          <span className="supportedBy">supported by</span>
-          {comments !== null ? (
-            <div className="commentsDiv">
-              {Object.values(comments).map((comment) => (
-                <div key={comment.id}>
+        <div className="supportedBy">supported by</div>
+        {comments !== null ? (
+          <div>
+            {Object.values(comments).map((comment) => (
+              <div className="commentBlock"  key={comment.id}>
+                {user !== null ? (
+                  <div className="commentsDiv">
+                    <img
+                      src={user[+comment.userId].imgUrl}
+                      alt="userImg"
+                      className="userCImg"
+                    />
+                    <span className="userCName">
+                      {user[+comment.userId].username}
+                    </span>
+                  </div>
+                ) : null}{" "}
+                <div className="cmntSection">
                   {comment.content}
                   {id === comment.userId ? (
                     <>
-                      <button onClick={() => setShowModal(true)} className="editCBtn">
+                      <button
+                        onClick={() => setShowModal(true)}
+                        className="editCBtn"
+                      >
                         Edit Comment{" "}
                       </button>
                       {showModal && (
@@ -93,15 +106,18 @@ function deleteBtn(id) {
                     </>
                   ) : null}
                   {id === comment.userId ? (
-                    <button onClick={() => deleteBtn(comment.id)} className="deleteCBtn">
+                    <button
+                      onClick={() => deleteBtn(comment.id)}
+                      className="deleteCBtn"
+                    >
                       delete
                     </button>
                   ) : null}
                 </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
       <div className="track_Img">
         {songs !== null ? (
