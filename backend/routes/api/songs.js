@@ -81,13 +81,13 @@ router.post("/:id(\\d+)/comments", requireAuth, asyncHandler(async (req, res) =>
 //   })
 // );
 /* wcYy963y-tFAddt66mPCJ0xyeyy1seBweFgI
-fetch('/api/songs/1/comments', {
+fetch('/api/users/9', {
   method: 'PUT',
   headers: {
     "Content-Type": "application/json",
-    "XSRF-TOKEN": `TDRvYjeJ-V-M5kN24vJhbMyd0Eb8z6NRvKZg`
+    "XSRF-TOKEN": `5tGGP1fg-WM8L4j5cWS15bWn4g42udYo1auk`
   },
-  body: JSON.stringify({ content: 'i love this song this is an edit' })
+  body: JSON.stringify({ imgUrl: 'https://profileimages1.s3.us-west-1.amazonaws.com/Luniz.jpeg' })
 }).then(res => res.json()).then(data => console.log(data));
 */
 module.exports = router;

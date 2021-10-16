@@ -8,6 +8,7 @@ import { addComment } from "../../store/comments";
 import { deleteComment } from "../../store/comments";
 import { Modal } from "../../context/Modal";
 import EditComment from "./EditComment";
+import "./trackPage.css";
 
 function TrackPage() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const user = useSelector((store) => store.userReducer.artists);
   const [showModal, setShowModal] = useState(false);
 const comments = useSelector((store) => store.commentReducer.comments);
 const id = useSelector((state) => state.session.user?.id);
-
+console.log("hello??", user)
 const [content, setContent] = useState("");
 const [errors, setErrors] = useState([]);
 
@@ -43,18 +44,17 @@ function deleteBtn(id) {
 }
 
   return (
-    <div>
-      <h2>song here</h2>
-      <br />
-      {songs !== null ? (
-        <div>
-          <div key={songs.id} className="userSongs">
-            <h3>
-              {songs.name} by{" "}
+    <div className="containerTrackPage">
+      <div className="innerContainer">
+        {songs !== null ? (
+          <div key={songs.id} className="userTracks">
+            <h2 className="titleSong">{songs.name}</h2>
+            <h3 className="titleArtists">
+              by{" "}
               {user !== null ? (
                 <>
                   {Object.values(user).map((artist) => (
-                    <span key={artist.id}>
+                    <span key={artist.id} className="artistsN">
                       {songs.artistId === artist.id ? (
                         <Link key={artist.id} to={`/artists/${artist.id}`}>
                           {artist.username}
@@ -65,55 +65,86 @@ function deleteBtn(id) {
                 </>
               ) : null}
             </h3>
-            <img src={songs.imgUrl} alt="SongImage" className="imgUrl" />
             <audio src={songs.url} controls />
           </div>
-        </div>
-      ) : null}
-      <div>
+        ) : null}
+        <div className="supportedBy">supported by</div>
+        {comments !== null ? (
+          <div>
+            {Object.values(comments).map((comment) => (
+              <div className="commentBlock" key={comment.id}>
+                {user !== null ? (
+                  <div className="commentsDiv">
+                    <img
+                      src={user[+comment.userId].imgUrl}
+                      alt="userImg"
+                      className="userCImg"
+                    />
+                    <span className="userCName">
+                      <Link to={`/artists/${comment.userId}`}>
+                        {" "}
+                        {user[+comment.userId].username}
+                      </Link>
+                    </span>
+                  </div>
+                ) : null}{" "}
+                <div className="cmntSection">
+                  {comment.content}
+                  {id === comment.userId ? (
+                    <>
+                      <button
+                        onClick={() => setShowModal(true)}
+                        className="editCBtn"
+                      >
+                        Edit Comment{" "}
+                      </button>
+                      {showModal && (
+                        <Modal onClose={() => setShowModal(false)}>
+                          <EditComment
+                            setShowModal={setShowModal}
+                            comment={comment}
+                          />
+                        </Modal>
+                      )}
+                    </>
+                  ) : null}
+                  {id === comment.userId ? (
+                    <button
+                      onClick={() => deleteBtn(comment.id)}
+                      className="deleteCBtn"
+                    >
+                      delete
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <div className="track_Img">
+        {songs !== null ? (
+          <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
+        ) : null}
         <form onSubmit={handleSubmit}>
-          <label>Add A Comment</label>
           <br />
-          <input
-            type="text"
+          <textarea
+            // type="textarea"
             value={content}
             required
             onChange={(e) => setContent(e.target.value)}
             className="inputBox"
           />
-          <button type="submit" disabled={errors.length > 0}>
+          <br />
+          <button
+            className="commentBtn"
+            type="submit"
+            disabled={errors.length > 0}
+          >
             Add Comment
           </button>
         </form>
       </div>
-      Comments:
-      {comments !== null ? (
-        <div>
-          {Object.values(comments).map((comment) => (
-            <div key={comment.id}>
-              {comment.content}
-              {id === comment.userId ? (
-                <>
-                  <button onClick={() => setShowModal(true)}>
-                    Edit Comment{" "}
-                  </button>
-                  {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                      <EditComment
-                        setShowModal={setShowModal}
-                        comment={comment}
-                      />
-                    </Modal>
-                  )}
-                </>
-              ) : null}
-              {id === comment.userId ? (
-                <button onClick={() => deleteBtn(comment.id)}>delete</button>
-              ) : null}
-            </div>
-          ))}
-        </div>
-      ) : null}
     </div>
   );
 }

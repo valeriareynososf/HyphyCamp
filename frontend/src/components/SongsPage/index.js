@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongs } from "../../store/songs";
  import {Link} from "react-router-dom";
+import "./allmusic.css";
 
 function SongsPage() {
   const dispatch = useDispatch();
@@ -11,26 +12,21 @@ function SongsPage() {
     dispatch(getSongs());
   }, [dispatch]);
   return (
-    <>
-      <h2>hello these are the songs</h2>
-      <div>
-        <Link to="/artists">Back To Artists</Link> | Songs
-      </div>
-
+    <div className="allTracksContainer">
       {song !== null ? (
-        <ul>
+        <>
           {Object.values(song).map((single) => (
-            <li key={single.id}>
+            <div key={single.id} className="tracksDiv">
               <Link key={single.id} to={`/songs/${single.id}`}>
-                {single.name}:
+                <img src={single.imgUrl} alt="SongImage" className="allsongImg" />
                 <br />
-                <img src={single.imgUrl} alt="SongImage" className="imgUrl" />
+              {single.name}
               </Link>
-            </li>
+            </div>
           ))}
-        </ul>
+        </>
       ) : null}
-    </>
+    </div>
   );
 }
 export default SongsPage;

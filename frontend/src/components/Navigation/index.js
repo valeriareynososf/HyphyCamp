@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -27,7 +27,7 @@ const demonLogin = async () => {
     sessionActions.login({ credential: "demo@user.io", password: "password" })
   );
 }
-  let paragraph;
+  //let paragraph;
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <ProfileButton user={sessionUser} />;
@@ -41,18 +41,16 @@ const demonLogin = async () => {
         </button>
       </>
     );
-    paragraph = (
-      <>
-        Discover amazing new music and directly support the artists who make it.
-      </>
-    );
+    // paragraph = (
+    //   <>
+    //     Discover amazing new music and directly support the artists who make it.
+    //   </>
+    // );
   }
 
   return (
     <nav className="navCon">
       <nav className="navbar">
-        {/* <img src={logogray} alt="record player" className="homebBtn" /> */}
-        {/* LOGO BUTTON */}
         <NavLink exact to="/" className="homeLink">
           <img src={logogray} alt="record player" className="homebBtn" />
         </NavLink>
@@ -60,7 +58,18 @@ const demonLogin = async () => {
           <li>{isLoaded && sessionLinks}</li>
         </ul>
       </nav>
-      <div>{paragraph}</div>
+      <div className="discoverSentence">
+        Discover amazing new music and{" "}
+        <span className="midSentence">directly support</span> the artists who make
+        it.
+        <span className="allArtists">
+          <Link to="/artists">All Artists</Link>
+        </span>
+        <span className="allSongs">
+          <Link to="/songs">Music</Link>
+        </span>
+      </div>
+      {/* <div>{paragraph}</div> */}
     </nav>
   );
 }

@@ -13,22 +13,23 @@ useEffect(() => {
 }, [dispatch]);
 
   return (
-    <div className="artistsList">
-      <div>
-        <span>Artists</span> | <Link to="/songs">Songs</Link>
-      </div>{" "}
+    <div className="allArtistsContainer">
       {user !== null ? (
-        <ul>
+        <>
           {Object.values(user).map((artist) => (
-            <li key={artist.id}>
-              <Link key={artist.id} to={`/artists/${artist.id}`}>
-                {artist.username}:
-                <br />
-                <img src={artist.imgUrl} alt="ArtistImage" className="imgUrl" />
-              </Link>
-            </li>
+            <div key={artist.id} className="artDiv">
+                <Link key={artist.id} to={`/artists/${artist.id}`}>
+                  <img
+                    src={artist.imgUrl}
+                    alt="ArtistImage"
+                    className="imgUrl"
+                  />
+                  <br />
+                  {artist.username}
+                </Link>
+            </div>
           ))}
-        </ul>
+        </>
       ) : null}
     </div>
   );

@@ -13,9 +13,9 @@ function EditSong() {
   const TRACKID = useSelector((store) => store.songReducer?.songs?.[songId]);
 
   const id = useSelector((state) => state.session.user?.id);
-  const [name, setName] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
-  const [url, setUrl] = useState("");
+  const [name, setName] = useState(TRACKID?.name);
+  const [imgUrl, setImgUrl] = useState(TRACKID?.imgUrl);
+  const [url, setUrl] = useState(TRACKID?.url);
   const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
@@ -37,16 +37,15 @@ const handleCancelClick = (e) => {
     if (!url) errors.push("A url to the track is required");
     setErrors(errors);
     dispatch(getSongs());
-   
   }, [name, url, dispatch]);
 
-useEffect(() => {
-  if (TRACKID) {
-    setName(TRACKID.name);
-    setImgUrl(TRACKID.imgUrl);
-    setUrl(TRACKID.url);
-  }
-}, [TRACKID]);
+// useEffect(() => {
+//   if (TRACKID) {
+//     setName(TRACKID.name);
+//     setImgUrl(TRACKID.imgUrl);
+//     setUrl(TRACKID.url);
+//   }
+// }, [TRACKID]);
 
   return (
     <>

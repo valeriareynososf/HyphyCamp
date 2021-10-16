@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import { Link, useHistory } from "react-router-dom";
 
 import "./Navigation.css";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  let history = useHistory();
+
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -27,7 +30,10 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    const logginout = dispatch(sessionActions.logout());
+    if(logginout){
+      history.push(`/`);
+    }
   };
 
   return (
@@ -37,7 +43,11 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
+          <li className="proLink">
+            <Link key={user.id} to={`/artists/${user.id}`}>
+              {user.username}
+            </Link>
+          </li>
           <li>{user.email}</li>
           <li>
             <button onClick={logout}>Log Out</button>

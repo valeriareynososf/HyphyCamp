@@ -1,13 +1,72 @@
 /* body {
     background-color: red;
 } */
+.allArtistsContainer {
+    padding-top: 15px;
+     margin: 0 430px;
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+   border: 3px solid red;
+   grid-gap: 15px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* margin-top: 50px; */
+    margin-left: 140px;
+    margin-right: 140px;
+    /* border: 3px solid red; */
+    background-color: black;
+}
 
-
+.artDiv {
+    list-style: none;
+    /* background-color: #8ca0ff; */
+  /* width: auto;
+  height: auto; */
+    /* border: 3px solid purple; */
+      height: 400px;
+    width: 300px;
+    object-fit: none;
+    object-position: 50% .5;
+    padding: 3px;
+    width: 10 vw;
+   
+}
+.artDiv a {
+    text-decoration: none;
+    color: #0687F5;
+    font-weight: 600;
+}
+.artDiv a:hover {
+    text-decoration: underline;
+}
+ 
 .imgUrl {
-    width: 150px;
-    height: 150px;
+    /* width: 200px;
+    height: 200px; */
+    /* width: 93%;
+    height: 90%; */
+    width: 300px;
+    height: 300px;
+    /* position: center; */
+    /* height: 100%; */
+    /* border: 3px dotted yellow; */
 }
 
-.artistsList {
-    margin-left: 45px;
+/* .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-left: 140px;
+    margin-right: 140px;
 }
+
+.gallery_image {
+    height: 400px;
+    width: 300px;
+    object-fit: scale-down;
+    object-position: 50% .5;
+    padding: 3px;
+    width: 10 vw;
+} */

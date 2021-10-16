@@ -1,0 +1,128 @@
+.containerTrackPage {
+ margin: 0 300px;
+    padding: 35px 30px 80px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: black;
+  height: 1000px;
+}
+/* .userTracks {
+    border: 3px solid green;
+} */
+.innerContainer {
+    width: 400px;
+}
+.titleSong {
+    color: #363636;
+    font-family: Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 530;
+    margin-bottom: 0;
+}
+.titleArtists {
+    margin-top: 6px;
+font-family: Helvetica, sans-serif;
+font-size: 14px;
+color: #413f3f;
+}
+.artistsN a{
+    color: #0687f5;
+    text-decoration: none;
+}
+.artistsN a:hover{
+    text-decoration: underline;
+}
+
+.trackUrl {
+    width: 350px;
+    height: 350px;
+}
+.track_Img {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commentBlock {
+margin-top: 10px;
+margin-left: 0;
+display: flex;
+    flex-direction: row;
+
+}
+.supportedBy {
+    margin-top: 16px;
+    color: #3c3b3b;
+    font-size: 16px;
+}
+.inputBox {
+height: 100%;
+width: 100%;
+background-color: rgb(211, 207, 207);
+}
+
+.cmntSection {
+    margin-top: 15px;
+    color: #363636;
+    font-size: 14px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 30px;
+    width: auto;
+    height: auto;
+}
+
+.commentsDiv {
+     margin-top: 15px;
+    width: 85px;
+    margin-right: 14px;
+}
+.editCBtn, .commentBtn, .deleteCBtn {
+    color: #0687f5;
+    margin-top: 10px;
+    background-color: #363636;
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+    padding: 6px 5px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.deleteCBtn:hover {
+    background-color: red;
+    color: white;
+}
+.commentBtn:hover {
+    background-color: #0687f5;
+    color: whitesmoke;
+}
+.editCBtn:hover {
+    background-color: rgb(43, 106, 43);
+    color: white;
+}
+.editCBtn, .commentBtn, .deleteCBtn {
+ float: right;
+}
+.userCName a {
+    font-family: Helvetica, sans-serif;
+    /* font-weight: 530; */
+    font-size: 14px;
+    color: #0687f5;
+    line-height: 20px;
+    text-decoration: none;
+}
+.userCName a:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
+.userCImg {
+    width: 85px;
+    height: 80px;
+}
+
+
+@media (max-width: 1280px) {
+   .containerTrackPage {
+        margin: 0 120px;
+   }
+}

@@ -3,6 +3,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    list-style-type: none;
+    font-family: Helvetica, sans-serif;
+     color: #161113;
+}
+.proLink a {
+     text-decoration: none;
+      color: #161113;
+      font-weight: 600;
 }
 .navCon {
 margin: 0 145px;
@@ -37,15 +45,19 @@ margin: 0 145px;
     font-family: Helvetica;
     color: #161113;
     font-weight: 600;
-
+background-color: white;
 }
-
+.loginBtn:hover, .signupBtn:hover, .demoBtn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 .signupBtn {
     border: none;
      font-size: 14px;
     font-family: Helvetica;
     color: #161113;
     font-weight: 600;
+    background-color: white;
 
 }
 .demoBtn {
@@ -54,7 +66,7 @@ margin: 0 145px;
     font-family: Helvetica;
     color: #161113;
     font-weight: 600;
-
+background-color: white;
 }
 
 .profileBtn {
@@ -72,3 +84,30 @@ width: auto;
 height: 40px;
 }
 
+.discoverSentence {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    color: #161113;
+    margin: 9px 0px 0px;
+}
+
+/* ::selection { background-color: #C3CFE2; } */
+.midSentence {
+    /* color: #408ea3; */
+    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+    background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.allArtists a, .allSongs a {
+margin-left: 3rem;
+text-decoration: none;
+ color: #0687F5;
+font-weight: 600;
+ font-size: 14px;
+    font-family: Helvetica;
+}
+
+a:hover {
+    text-decoration: underline;
+}

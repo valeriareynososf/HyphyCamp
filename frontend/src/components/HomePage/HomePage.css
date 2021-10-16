@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(143, 135, 135);
+     background-color: rgb(24, 23, 23);
 }
 
 .homeContainer {
@@ -17,19 +17,53 @@ grid-template-areas:
 
 .recordImg {
     grid-area: b;
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 800px;
+    /* width: 600px;
+    height: 600px; */
     /* border: 2px solid red; */
 }
 
 .bridgeImg {
     grid-area: a;
-  width: 355px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
+    max-width: 575px;
+    max-height: 500px; 
+  /* width: 355px;
+    height: 300px; */
 }
 
 .carImg {
     grid-area: c;
+    width: 100%;
+    height: 100%;
+     max-width: 575px;
+    max-height: 500px; 
+  /* width: 355px;
+    height: 300px; */
+}
+
+@media (max-width: 1280px) {
+ .recordImg {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 600px;
+}
+.bridgeImg {
+    width: 100%;
+    height: 100%;
   width: 355px;
     height: 300px;
+}
+.carImg {
+    grid-area: c;
+    width: 100%;
+    height: 100%;
+    width: 355px;
+    height: 300px;
+}
 }
