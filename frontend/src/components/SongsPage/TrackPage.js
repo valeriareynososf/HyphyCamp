@@ -44,74 +44,82 @@ function deleteBtn(id) {
 }
 
   return (
-    <div className ="containerTrackPage">
-      {songs !== null ? (
-          <div key={songs.id} className="userTracks">
-            <h2 class="titleSong">{songs.name}</h2>
-            <h3 className="titleArtists">
-              by{" "}
-              {user !== null ? (
-                <>
-                  {Object.values(user).map((artist) => (
-                    <span key={artist.id} className="artistsN">
-                      {songs.artistId === artist.id ? (
-                        <Link key={artist.id} to={`/artists/${artist.id}`}>
-                          {artist.username}
-                        </Link>
-                      ) : null}
-                    </span>
-                  ))}
-                </>
-              ) : null}
-            </h3>
-            <audio src={songs.url} controls />
-            <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
-          </div>
-      ) : null}
+    <div className="containerTrackPage">
       <div>
-        <form onSubmit={handleSubmit}>
-          <label>Add A Comment</label>
-          <br />
-          <input
-            type="text"
-            value={content}
-            required
-            onChange={(e) => setContent(e.target.value)}
-            className="inputBox"
-          />
-          <button type="submit" disabled={errors.length > 0}>
-            Add Comment
-          </button>
-        </form>
-      </div>
-      Comments:
-      {comments !== null ? (
-        <div>
-          {Object.values(comments).map((comment) => (
-            <div key={comment.id}>
-              {comment.content}
-              {id === comment.userId ? (
-                <>
-                  <button onClick={() => setShowModal(true)}>
-                    Edit Comment{" "}
-                  </button>
-                  {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                      <EditComment
-                        setShowModal={setShowModal}
-                        comment={comment}
-                      />
-                    </Modal>
-                  )}
-                </>
-              ) : null}
-              {id === comment.userId ? (
-                <button onClick={() => deleteBtn(comment.id)}>delete</button>
-              ) : null}
+        {songs !== null ? (
+          <>
+            <div key={songs.id} className="userTracks">
+              <h2 class="titleSong">{songs.name}</h2>
+              <h3 className="titleArtists">
+                by{" "}
+                {user !== null ? (
+                  <>
+                    {Object.values(user).map((artist) => (
+                      <span key={artist.id} className="artistsN">
+                        {songs.artistId === artist.id ? (
+                          <Link key={artist.id} to={`/artists/${artist.id}`}>
+                            {artist.username}
+                          </Link>
+                        ) : null}
+                      </span>
+                    ))}
+                  </>
+                ) : null}
+              </h3>
+              <audio src={songs.url} controls />
             </div>
-          ))}
+          </>
+        ) : null}
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label>Add A Comment</label>
+            <br />
+            <input
+              type="text"
+              value={content}
+              required
+              onChange={(e) => setContent(e.target.value)}
+              className="inputBox"
+            />
+            <button type="submit" disabled={errors.length > 0}>
+              Add Comment
+            </button>
+          </form>
         </div>
+        Comments:
+        {comments !== null ? (
+          <div>
+            {Object.values(comments).map((comment) => (
+              <div key={comment.id}>
+                {comment.content}
+                {id === comment.userId ? (
+                  <>
+                    <button onClick={() => setShowModal(true)}>
+                      Edit Comment{" "}
+                    </button>
+                    {showModal && (
+                      <Modal onClose={() => setShowModal(false)}>
+                        <EditComment
+                          setShowModal={setShowModal}
+                          comment={comment}
+                        />
+                      </Modal>
+                    )}
+                  </>
+                ) : null}
+                {id === comment.userId ? (
+                  <button onClick={() => deleteBtn(comment.id)}>delete</button>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <div className="track_Img">
+      {songs !== null ? (
+        <img src={songs.imgUrl} alt="SongImage" className="trackUrl" />
       ) : null}
+      </div>
     </div>
   );
 }
