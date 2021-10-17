@@ -36,13 +36,5 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
     return res.json({ deleted: comment });
   })
 );
-/*
-fetch('/api/comments/3', {
-  method: 'delete',
-  headers: {
-    "Content-Type": "application/json",
-    "XSRF-TOKEN": `TDRvYjeJ-V-M5kN24vJhbMyd0Eb8z6NRvKZg`
-  }
-}).then(res => res.json()).then(data => console.log(data));
-*/
+
 module.exports = router;

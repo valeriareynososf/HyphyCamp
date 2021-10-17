@@ -68,26 +68,4 @@ router.post("/:id(\\d+)/comments", requireAuth, asyncHandler(async (req, res) =>
   })
 );
 
-//edit comment
-// router.put("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
-//     const { content } = req.body;
-//     const song = await Song.findByPk(req.params.id);
-//     const track = await song.update({
-//       name,
-//       imgUrl,
-//       url,
-//     });
-//     return res.json(track);
-//   })
-// );
-/* wcYy963y-tFAddt66mPCJ0xyeyy1seBweFgI
-fetch('/api/users/9', {
-  method: 'PUT',
-  headers: {
-    "Content-Type": "application/json",
-    "XSRF-TOKEN": `5tGGP1fg-WM8L4j5cWS15bWn4g42udYo1auk`
-  },
-  body: JSON.stringify({ imgUrl: 'https://profileimages1.s3.us-west-1.amazonaws.com/Luniz.jpeg' })
-}).then(res => res.json()).then(data => console.log(data));
-*/
 module.exports = router;

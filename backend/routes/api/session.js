@@ -66,13 +66,3 @@ router.get('/', restoreUser, (req, res) => {
 // );
 
 module.exports = router;
-/* wcYy963y-tFAddt66mPCJ0xyeyy1seBweFgI
-fetch('/api/session', {
-  method: 'POST',
-  headers: {
-    "Content-Type": "application/json",
-    "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
-  },
-  body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
-}).then(res => res.json()).then(data => console.log(data));
-*/

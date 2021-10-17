@@ -10,12 +10,6 @@ import "./profile.css";
 
 function EditProfile({user, close}) {
     const dispatch = useDispatch();
-    // const history = useHistory();
-    // const { userId } = useParams();
-    // const user = useSelector((state) => state.single.main);
-// const id = useSelector((state) => state.session.user?.id);
-// console.log("THIS ID", id)
-// console.log("THIS USER", user)
 const [email, setEmail] = useState(user.email);
 const [imgUrl, setImgUrl] = useState(user.imgUrl);
 const [username, setUsername] = useState(user.username);

@@ -18,7 +18,6 @@ const user = useSelector((store) => store.userReducer.artists);
   const [showModal, setShowModal] = useState(false);
 const comments = useSelector((store) => store.commentReducer.comments);
 const id = useSelector((state) => state.session.user?.id);
-console.log("hello??", user)
 const [content, setContent] = useState("");
 const [errors, setErrors] = useState([]);
 
