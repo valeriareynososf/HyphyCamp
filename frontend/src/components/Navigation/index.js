@@ -60,8 +60,8 @@ const demonLogin = async () => {
         <span className="allSongs">
           <Link to="/songs">Music</Link>
         </span>
-        <span className="allSongs">
-          <AboutModal/>
+        <span>
+          <AboutModal />
         </span>
       </div>
     </nav>
