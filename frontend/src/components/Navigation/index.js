@@ -5,11 +5,8 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal"
 import * as sessionActions from "../../store/session";
-import homeImg from "../../images/homeImg.png";
 import logogray from "../../images/logogray.png";
-
-//import {csrfFetch} from "../../store/csrf";
-//import {demologin} from "../../store/session"
+import AboutModal from "./AboutModal";
 
 import "./Navigation.css";
 
@@ -27,7 +24,7 @@ const demonLogin = async () => {
     sessionActions.login({ credential: "demo@user.io", password: "password" })
   );
 }
-  //let paragraph;
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <ProfileButton user={sessionUser} />;
@@ -41,11 +38,6 @@ const demonLogin = async () => {
         </button>
       </>
     );
-    // paragraph = (
-    //   <>
-    //     Discover amazing new music and directly support the artists who make it.
-    //   </>
-    // );
   }
 
   return (
@@ -60,16 +52,18 @@ const demonLogin = async () => {
       </nav>
       <div className="discoverSentence">
         Discover amazing new music and{" "}
-        <span className="midSentence">directly support</span> the artists who make
-        it.
+        <span className="midSentence">directly support</span> the artists who
+        make it.
         <span className="allArtists">
           <Link to="/artists">All Artists</Link>
         </span>
         <span className="allSongs">
           <Link to="/songs">Music</Link>
         </span>
+        <span>
+          <AboutModal />
+        </span>
       </div>
-      {/* <div>{paragraph}</div> */}
     </nav>
   );
 }

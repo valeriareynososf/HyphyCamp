@@ -52,6 +52,12 @@ function App() {
         <Route path="/artists/:userId/edit" exact>
           <EditProfile />
         </Route>
+        <Route path="/">
+        <h2 style={{
+                    display: 'flex',
+              justifyContent: 'center',
+              color:'white'}}>Page Not Found</h2>
+        </Route>
       </Switch>
     </nav>
   );
