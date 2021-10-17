@@ -40,7 +40,7 @@ function SignupForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>Email</label>
+      <label>Email:</label>
       <input
         type="text"
         value={email}
@@ -48,22 +48,15 @@ function SignupForm() {
         required
       />
       <br />
-      <label>Username</label>
+      <label>Username:</label>
       <input
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
       />
-      {/* <label>Profile Image</label>
-      <input
-        type="text"
-        value={imgUrl}
-        onChange={(e) => setImgUrl(e.target.value)}
-        required
-      /> */}
       <br />
-      <label>Password</label>
+      <label>Password:</label>
       <input
         type="password"
         value={password}
@@ -71,7 +64,7 @@ function SignupForm() {
         required
       />
       <br />
-      <label>Confirm Password</label>
+      <label>Confirm Password:</label>
       <input
         type="password"
         value={confirmPassword}
@@ -79,7 +72,7 @@ function SignupForm() {
         required
       />
       <br />
-      <button type="submit">Sign Up</button>
+      <button type="submit" className="signUpBtn">Sign Up</button>
     </form>
   );
 }

@@ -1,5 +1,26 @@
 .loginForm {
-  display: flex;
+    display: flex; 
   flex-direction: column;
-  padding: 20px;
+  padding: 60px;
+  height: 250px;
+  width: 200px;
+   color: #0687F5;
+  font-family: Helvetica, sans-serif;
+  font-weight: 550;
+}
+
+.logIbBtn {
+   background-color: #0687F5;
+  color: whitesmoke;
+  border: none;
+  font-family: Helvetica, sans-serif;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.logIbBtn:hover{
+ cursor: pointer;
+  background-color: whitesmoke;
+  color: #0687F5;
+  border: 1px solid #0687F5;
 }

@@ -27,8 +27,14 @@ function LoginForm() {
     );
     
   };
-
+ 
   return (
+    <>
+      {/* <button type="button" onClick={handleCancelClick}>
+        <span role="img" aria-label="cancel">
+          ｘ
+        </span>
+      </button> */}
     <form onSubmit={handleSubmit} className="loginForm">
       <ul>
         {errors.map((error, idx) => (
@@ -51,8 +57,9 @@ function LoginForm() {
         required
       />
       <br />
-      <button type="submit">Log In</button>
+      <button type="submit" className="logIbBtn">Log In</button>
     </form>
+    </>
   );
 }
 
