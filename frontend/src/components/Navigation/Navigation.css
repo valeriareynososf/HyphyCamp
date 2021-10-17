@@ -111,3 +111,29 @@ font-weight: 600;
 a:hover {
     text-decoration: underline;
 }
+
+.aboutContainer {
+    display: flex; 
+  flex-direction: column;
+  padding: 60px;
+  padding-top: 40px;
+  height: 250px;
+  width: 200px;
+   color: #0687F5;
+  font-family: Helvetica, sans-serif;
+  font-weight: 550;
+}
+.aboutBtn {
+    margin-left: 3rem;
+    border: none;
+    background-color: #fff;
+    color: #0687F5;
+    font-weight: 600;
+ font-size: 14px;
+    font-family: Helvetica;
+}
+
+.aboutBtn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
