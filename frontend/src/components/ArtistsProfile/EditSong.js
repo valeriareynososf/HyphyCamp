@@ -4,6 +4,7 @@ import { editSong } from "../../store/songs";
 import { useParams, useHistory } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 //import {singleSong} from "../../store/songs";
+import "./profile.css"
 
 function EditSong() {
   const dispatch = useDispatch();
@@ -48,14 +49,10 @@ const handleCancelClick = (e) => {
 // }, [TRACKID]);
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
+    <div className="editSongContainer">
+      <form onSubmit={handleSubmit} className="editSongForm">
         <label>Track Name</label>
+        <br />
         <input
           type="text"
           value={name}
@@ -63,6 +60,7 @@ const handleCancelClick = (e) => {
         />
         <br />
         <label>Image</label>
+        <br />
         <input
           type="text"
           placeholder="image url"
@@ -71,6 +69,7 @@ const handleCancelClick = (e) => {
         />
         <br />
         <label>Add Audio</label>
+        <br />
         <input
           type="text"
           placeholder="track url"
@@ -78,14 +77,19 @@ const handleCancelClick = (e) => {
           onChange={(e) => setUrl(e.target.value)}
         />
         <br />
-        <button type="submit" disabled={errors.length > 0}>
+        <button type="submit" disabled={errors.length > 0} className="updateTrackBtn">
           Update Track
         </button>
       </form>
-      <button type="button" onClick={handleCancelClick}>
+      <br />
+      <button
+        type="button"
+        onClick={handleCancelClick}
+        className="cancelEditBtn"
+      >
         Cancel
       </button>
-    </>
+    </div>
   );
 }
 

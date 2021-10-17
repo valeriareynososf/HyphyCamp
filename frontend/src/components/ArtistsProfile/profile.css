@@ -4,6 +4,24 @@
   padding: 60px;
   height: 250px;
   width: 200px;
+  color: #0687F5;
+  font-family: Helvetica, sans-serif;
+  font-weight: 540;
+}
+.addSongBtn {
+    background-color: #0687F5;
+  color: whitesmoke;
+  border: none;
+  font-family: Helvetica, sans-serif;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.addSongBtn:hover{
+   cursor: pointer;
+  background-color: whitesmoke;
+  color: #0687F5;
+  border: 1px solid #0687F5;
 }
 
 .profileImg {
@@ -14,33 +32,19 @@
 .container {
    margin: 0 300px;
     padding: 35px 30px 80px;
-    border: 3px solid orange;
     background-color: black;
-    /* display: grid;
-    grid-template-columns: repeat(4,1fr); */
-  /* grid-auto-rows: 200px; */
   display: flex;
-  /* flex-direction: row; */
 }
 
 .profileInfo {
     width: 120px;
     height: 518px;
     padding: 0 25px;
-    /* border: 3px solid red; */
-  /* align-self: end; */
     flex: 1;
-    border: 2px solid green;
-     /* justify-content: flex-end; */
 }
 .songsList {
-    /* justify-content: flex-start; */
     flex: 2;
-    border: 2px solid purple;
 }
-/* .fa-play{
-background-color: #fff;
-/* size: 2px; */
 
 .playBtn {
   background-color: #fff;
@@ -48,13 +52,7 @@ background-color: #fff;
   border-radius: 5px;
   margin: 4px 0 0 6px;
 }
-/* .playBtn :hover{
-  cursor: pointer;
-}
 
-.olList li::marker{
-  color: rgb(213, 205, 205);
-} */
 .songTitlePro {
 color: #0687F5;
 text-decoration: none;
@@ -74,9 +72,9 @@ text-decoration: none;
 }
 .deleteTrakbtn {
 text-decoration: none;
-color: rgb(126, 25, 25);
 font-weight: 600;
 background-color: black;
+color: red;
 border: none;
 }
 .deleteTrakbtn:hover {
@@ -84,27 +82,102 @@ border: none;
   font-size: 28px;
 }
 .userSongs {
-  /* list-style-type: none; */
-  border: 2px solid red;
-  /* flex: 3; */
   height: 200px;
 }
 
 .divSongImg {
   flex: 1;
-  border: 2px solid darkturquoise;
 }
 .songImg {
   width: 215px;
   height: 200px;
   justify-content: space-between;
- /* float: right; */
 }
 .usernamePro {
   color: #4f4c4c;
   font-family: Helvetica, sans-serif;
   font-size: 21px;
   line-height: 30px;
+}
+.editSongContainer {
+  display: flex;
+  flex-direction: column;
+    margin: 0 300px;
+    padding: 35px 30px 80px;
+    background-color: black;
+    color: #0687F5;
+    height: 500px;
+}
+.cancelEditBtn {
+  width: 100px;
+  background-color: rgb(145, 35, 35);
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  font-family: Helvetica, sans-serif;
+  color: whitesmoke;
+}
+
+.cancelEditBtn:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+  color:rgb(145, 35, 35);
+}
+
+.editSongForm {
+   display: flex;
+   flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+}
+.updateTrackBtn {
+   border-radius: 5px;
+  border: none;
+  padding: 5px;
+  font-family: Helvetica, sans-serif;
+  width: 100px;
+  background-color: #0687F5;
+  color: whitesmoke;
+}
+.updateTrackBtn:hover {
+cursor: pointer;
+background-color: whitesmoke;
+color: #0687F5;
+}
+.edProfileBtn, .addTrackBtn {
+  margin-top: 10px;
+background-color: #363636;
+color: #0687F5;
+ border-radius: 5px;
+  font-family: Helvetica, sans-serif;
+  padding: 6px;
+  margin-left: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+}
+
+.edProfileBtn:hover{
+  cursor: pointer;
+  background-color: whitesmoke;
+  color: #0687F5;
+}
+.addTrackBtn:hover {
+  cursor: pointer;
+  background-color: rgb(14, 106, 14);
+  color: whitesmoke;
+}
+.editProContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.editProForm {
+  color: #0687F5;
+  display: flex;
+   flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
 }
 
 @media (max-width: 1280px) {

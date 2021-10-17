@@ -64,9 +64,7 @@ if (deletetrack) {
                       delete
                     </button>
                   ) : null}
-                  {/* <img src={song.imgUrl} alt="ArtistImage" className="songImg" /> */}
                 </div>
-                {/* <img src={song.imgUrl} alt="ArtistImage" className="songImg" /> */}
                 <Link
                   to={`/songs/${song.id}`}
                   key={id}
@@ -91,7 +89,7 @@ if (deletetrack) {
         <div className="usernamePro">{user.username}</div>
         {user.id === id ? (
           <>
-            <button onClick={() => setShowModal(true)}>add a track </button>
+            <button onClick={() => setShowModal(true)} className="addTrackBtn">add a track </button>
             {showModal && (
               <Modal onClose={() => setShowModal(false)}>
                 <AddSong setShowModal={setShowModal} />
@@ -104,7 +102,7 @@ if (deletetrack) {
             {/* <Link to={`/artists/${id}/edit`} key={id}>
               edit profile
             </Link> */}
-            <button onClick={onClickEdit}>edit profile</button>
+            <button onClick={onClickEdit} className="edProfileBtn">edit profile</button>
             {showEdit ? <EditProfile user={user} close={setShowEdit} /> : null}
           </>
         ) : null}

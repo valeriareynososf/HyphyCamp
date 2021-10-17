@@ -36,11 +36,6 @@ function AddSong({setShowModal}) {
         </span>
       </button>
       <form onSubmit={handleSubmit} className="addSongForm">
-        {/* <ul>
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul> */}
         <label>Track Name</label>
         <input
           type="text"
@@ -64,7 +59,7 @@ function AddSong({setShowModal}) {
           onChange={(e) => setUrl(e.target.value)}
         />
         <br />
-        <button type="submit" disabled={errors.length > 0}>
+        <button type="submit" disabled={errors.length > 0} className="addSongBtn">
           Add Track
         </button>
       </form>

@@ -5,6 +5,9 @@ import {editUser} from "../../store/singleuser";
 // import { getUser} from "../../store/users";
 // import { singleUser } from "../../store/singleuser";
 //, useSelector 
+
+import "./profile.css";
+
 function EditProfile({user, close}) {
     const dispatch = useDispatch();
     // const history = useHistory();
@@ -54,14 +57,15 @@ const handleCancelClick = (e) => {
 // }, [user]);
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="editProContainer">
+      <form onSubmit={handleSubmit} className="editProForm">
         <ul>
           {errors.map((error) => (
             <li key={error}>{error}</li>
           ))}
         </ul>
         <label>Email</label>
+        <br />
         <input
           type="text"
           value={email}
@@ -69,6 +73,7 @@ const handleCancelClick = (e) => {
         />
         <br />
         <label>Username</label>
+        <br />
         <input
           type="text"
           value={username}
@@ -76,6 +81,7 @@ const handleCancelClick = (e) => {
         />
         <br />
         <label>Profle Image</label>
+        <br />
         <input
           type="text"
           placeholder="image url"
@@ -83,14 +89,23 @@ const handleCancelClick = (e) => {
           onChange={(e) => setImgUrl(e.target.value)}
         />
         <br />
-        <button type="submit" disabled={errors.length > 0}>
+        <button
+          type="submit"
+          disabled={errors.length > 0}
+          class="updateTrackBtn"
+        >
           Update Profile
         </button>
       </form>
-      <button type="button" onClick={handleCancelClick}>
+      <br />
+      <button
+        type="button"
+        onClick={handleCancelClick}
+        className="cancelEditBtn"
+      >
         Cancel
       </button>
-    </>
+    </div>
   );
 }
 
