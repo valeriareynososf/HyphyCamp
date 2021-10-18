@@ -45,6 +45,7 @@ if (search.length) {
 
 const handleSpan = (e) => {
 e.stopPropagation();
+setSearch("")
 }
 
   let sessionLinks;
@@ -73,11 +74,12 @@ e.stopPropagation();
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="search for songs"
+            placeholder="Search for artist or track"
             onClick={handleInput}
+            className="searchInput"
           />
           {searchValues && (
-            <SearchBar search={search} setSearchValues={setSearchValues} />
+            <SearchBar search={search} setSearchValues={setSearchValues} setSearch={setSearch} />
           )}
         </span>
         <ul className="sessionLinks">
