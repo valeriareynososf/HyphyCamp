@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch} from "react-redux";
-// import { useParams, useHistory } from "react-router-dom";
 import {editUser} from "../../store/singleuser";
-// import { getUser} from "../../store/users";
-// import { singleUser } from "../../store/singleuser";
-//, useSelector 
-
 import "./profile.css";
 
 function EditProfile({user, close}) {
@@ -22,12 +17,6 @@ e.preventDefault();
       return dispatch(editUser({ email, imgUrl, username }, user.id))
     }
       
-//  const editedSong = dispatch(editUser({ email, imgUrl, username }, user.id)
-//       );
-//       if (editedSong) {
-//           close(false)
-//       }
-    
 
  useEffect(() => {
    const errors = [];
@@ -39,7 +28,6 @@ e.preventDefault();
 
 const handleCancelClick = (e) => {
   e.preventDefault();
-  // history.push(`/artists/${id}`);
   close(false)
 };
 // useEffect(() => {

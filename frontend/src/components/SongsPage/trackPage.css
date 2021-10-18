@@ -87,6 +87,7 @@ background-color: rgb(211, 207, 207);
     border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
+float: right;
 }
 .deleteCBtn:hover {
     background-color: red;
@@ -100,9 +101,7 @@ background-color: rgb(211, 207, 207);
     background-color: rgb(43, 106, 43);
     color: white;
 }
-.editCBtn, .commentBtn, .deleteCBtn {
- float: right;
-}
+
 .userCName a {
     font-family: Helvetica, sans-serif;
     /* font-weight: 530; */
