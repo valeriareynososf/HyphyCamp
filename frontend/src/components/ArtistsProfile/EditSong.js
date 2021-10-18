@@ -25,7 +25,6 @@ function EditSong() {
     if (editedSong) {
         history.push(`/artists/${id}`);
      }}
-      
 
 const handleCancelClick = (e) => {
   e.preventDefault();

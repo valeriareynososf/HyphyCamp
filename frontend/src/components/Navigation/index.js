@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -7,7 +7,7 @@ import SignupFormModal from "../SignupFormModal"
 import * as sessionActions from "../../store/session";
 import logogray from "../../images/logogray.png";
 import AboutModal from "./AboutModal";
-
+import SearchBar from "./Search.js"
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -15,6 +15,8 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
+const [search, setSearch] = useState("");
+const [searchValues, setSearchValues] = useState(false);
 
 const demonLogin = async () => {
   setCredential("demo@user.io");
@@ -23,6 +25,27 @@ const demonLogin = async () => {
 
     sessionActions.login({ credential: "demo@user.io", password: "password" })
   );
+}
+
+useEffect(() => {
+  if (search.length) {
+    setSearchValues(true);
+  } else {
+    setSearchValues(false);
+  }
+}, [search]);
+
+const handleInput = () => {
+if (search.length) {
+  setSearchValues(true);
+} else {
+  setSearchValues(false);
+}
+};
+
+const handleSpan = (e) => {
+e.stopPropagation();
+setSearch("")
 }
 
   let sessionLinks;
@@ -46,6 +69,19 @@ const demonLogin = async () => {
         <NavLink exact to="/" className="homeLink">
           <img src={logogray} alt="record player" className="homebBtn" />
         </NavLink>
+        <span onClick={handleSpan}>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search for artist or track"
+            onClick={handleInput}
+            className="searchInput"
+          />
+          {searchValues && (
+            <SearchBar search={search} setSearchValues={setSearchValues} setSearch={setSearch} />
+          )}
+        </span>
         <ul className="sessionLinks">
           <li>{isLoaded && sessionLinks}</li>
         </ul>

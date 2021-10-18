@@ -148,3 +148,21 @@ a:hover {
      text-decoration: none;
      font-family: Helvetica;
  }
+
+ .searchInput {
+     width: 200px;
+     padding: 5px
+ }
+
+ .searchUl {
+list-style: none;
+ }
+
+ .linkSearch a{
+text-decoration: none;
+color: #363636;
+ }
+
+ .linkSearch a:hover {
+     color: #0687F5;
+ }
