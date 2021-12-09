@@ -33,7 +33,7 @@ function SearchBar({ search, setSearchValues, setSearch }) {
   }, [dispatch]);
   
   return (
-    <div>
+    <div className="divBar">
       <ul className="searchUl">
         {results !== null ? (
           <>

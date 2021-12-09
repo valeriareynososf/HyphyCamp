@@ -42,6 +42,7 @@ function ProfileButton({ user }) {
         {/* <i className="far fa-user-circle" /> */}
       </button>
       {showMenu && (
+        <div className="profileDropdownDiv">
         <ul className="profile-dropdown">
           <li className="proLink">
             <Link key={user.id} to={`/artists/${user.id}`}>
@@ -50,9 +51,10 @@ function ProfileButton({ user }) {
           </li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={logout} className="logOutDrop">Log Out</button>
           </li>
         </ul>
+        </div>
       )}
     </>
   );
